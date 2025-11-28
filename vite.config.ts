@@ -5,10 +5,11 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   define: {
-    // Safely polyfill process.env for the browser to prevent "process is not defined" errors
-    // while still allowing access to API_KEY if it exists in the build environment.
-    'process.env': {
-      API_KEY: process.env.API_KEY || ''
-    }
+    // This creates a global process.env object in the browser that mimics Node.js
+    // ensuring 'process.env.API_KEY' access does not crash the app.
+    'process.env': JSON.stringify({
+      API_KEY: process.env.API_KEY || '',
+      NODE_ENV: process.env.NODE_ENV || 'development'
+    })
   }
 });
