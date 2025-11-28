@@ -11,5 +11,8 @@ export default defineConfig({
       API_KEY: process.env.API_KEY || '',
       NODE_ENV: process.env.NODE_ENV || 'development'
     })
+  },
+  build: {
+    chunkSizeWarningLimit: 1000,
   }
 });
