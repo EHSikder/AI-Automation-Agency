@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GulfAutomate AI - Enterprise Automation</title>
+    <!-- Google Fonts: Inter for clean tech look, IBM Plex Sans Arabic for Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              background: '#000000', 
+              surface: '#080808',    
+              primary: '#ffffff',    
+              secondary: '#888888',
+              accent: '#ffffff',     
+              border: '#1f1f1f',     
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              arabic: ['IBM Plex Sans Arabic', 'sans-serif'],
+            },
+            backgroundImage: {
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+              'grid-pattern': "linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px)",
+              'subtle-glow': "conic-gradient(from 180deg at 50% 50%, #1a1a1a 0deg, #000000 180deg, #1a1a1a 360deg)",
+            },
+            animation: {
+              'spin-slow': 'spin 20s linear infinite',
+              'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'spotlight': 'spotlight 2s ease .75s 1 forwards',
+            },
+            keyframes: {
+              spotlight: {
+                '0%': { opacity: 0, transform: 'translate(-72%, -62%) scale(0.5)' },
+                '100%': { opacity: 1, transform: 'translate(-50%,-40%) scale(1)' },
+              },
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      
+      body {
+        background-color: #000000;
+        color: #ffffff;
+      }
+      
+      .bg-grid {
+        background-size: 50px 50px;
+        mask-image: linear-gradient(to bottom, transparent, 5%, white, 95%, transparent);
+        -webkit-mask-image: linear-gradient(to bottom, transparent, 5%, white, 95%, transparent);
+      }
+
+      /* Glass Noise Texture */
+      .noise {
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
+  }
+}
+</script>
+</head>
+  <body class="antialiased selection:bg-white selection:text-black">
+    <div id="root"></div>
+  </body>
+</html>
