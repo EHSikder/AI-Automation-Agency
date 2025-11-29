@@ -52,8 +52,8 @@ const AIChatWidget: React.FC = () => {
               </div>
               <div>
                 <span className="font-bold text-white text-sm block">AI Assistant</span>
-                <span className="text-[10px] text-secondary flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse shadow-[0_0_5px_#00E5FF]"></span>
+                <span className="text-[10px] text-accent flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse shadow-[0_0_5px_#A3FFE4]"></span>
                     Online
                 </span>
               </div>
@@ -69,7 +69,7 @@ const AIChatWidget: React.FC = () => {
               <div key={idx} className={`mb-6 flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] p-4 text-sm leading-relaxed tracking-wide ${
                   msg.role === 'user' 
-                    ? 'bg-primary text-white rounded-2xl rounded-tr-sm font-medium shadow-[0_0_10px_rgba(45,156,255,0.2)]' 
+                    ? 'bg-primary text-white rounded-2xl rounded-tr-sm font-medium shadow-[0_0_10px_rgba(108,99,255,0.2)]' 
                     : 'bg-surface-highlight text-gray-300 border border-border rounded-2xl rounded-tl-sm'
                 }`}>
                   {msg.text}
@@ -102,7 +102,7 @@ const AIChatWidget: React.FC = () => {
             <button 
               onClick={handleSend}
               disabled={isLoading || !input.trim()}
-              className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-secondary hover:text-black disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105"
+              className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-secondary hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105"
             >
               <Send className={`w-5 h-5 ${language === 'ar' ? 'rotate-180' : ''}`} />
             </button>
@@ -112,7 +112,7 @@ const AIChatWidget: React.FC = () => {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-primary hover:bg-secondary text-white hover:text-black w-16 h-16 rounded-full shadow-[0_0_30px_rgba(45,156,255,0.4)] transition-all transform hover:scale-105 flex items-center justify-center z-50 group border border-white/10"
+        className="bg-primary hover:bg-secondary text-white hover:text-white w-16 h-16 rounded-full shadow-[0_0_30px_rgba(108,99,255,0.4)] transition-all transform hover:scale-105 flex items-center justify-center z-50 group border border-white/10"
       >
         {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
       </button>

@@ -23,11 +23,11 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'py-4' : 'py-6'}`}>
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`rounded-full border border-border/50 backdrop-blur-md bg-background/60 px-6 transition-all duration-500 ${scrolled ? 'bg-background/90 border-primary/20 shadow-[0_0_20px_-10px_rgba(45,156,255,0.1)]' : ''}`}>
+          <div className={`rounded-full border border-border/50 backdrop-blur-md bg-background/60 px-6 transition-all duration-500 ${scrolled ? 'bg-background/90 border-primary/20 shadow-[0_0_20px_-10px_rgba(108,99,255,0.1)]' : ''}`}>
             <div className="flex justify-between items-center h-14">
               {/* Logo */}
               <div className="flex-shrink-0 flex items-center cursor-pointer gap-2 group" onClick={() => window.scrollTo(0,0)}>
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold group-hover:scale-90 transition-transform duration-300 shadow-[0_0_15px_rgba(45,156,255,0.4)]">
+                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold group-hover:scale-90 transition-transform duration-300 shadow-[0_0_15px_rgba(108,99,255,0.4)]">
                   <div className="w-2 h-2 bg-white rounded-full"></div>
                 </div>
                 <span className="font-bold text-lg tracking-tight text-white group-hover:text-primary transition-colors">GulfAutomate</span>
@@ -57,7 +57,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 </button>
                 <a 
                   href="#contact" 
-                  className="bg-primary text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-secondary hover:text-black transition-all flex items-center gap-2 tracking-wide uppercase shadow-[0_0_20px_rgba(45,156,255,0.3)] hover:shadow-[0_0_20px_rgba(0,229,255,0.5)]"
+                  className="bg-primary text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-secondary hover:text-white transition-all flex items-center gap-2 tracking-wide uppercase shadow-[0_0_20px_rgba(108,99,255,0.3)] hover:shadow-[0_0_20px_rgba(48,198,255,0.5)]"
                 >
                   {content.hero.ctaPrimary}
                 </a>
