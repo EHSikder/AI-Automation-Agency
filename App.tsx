@@ -27,32 +27,32 @@ const HeroSection = () => {
       {/* Dynamic Background */}
       <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-[0.05] z-0 pointer-events-none"></div>
       
-      {/* Spotlight Effect - Updated to new primary purple */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary opacity-[0.1] blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
+      {/* Spotlight Effect - Updated to Gold */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary opacity-[0.08] blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="flex flex-col items-center text-center">
           
-          {/* Badge - Updated colors */}
-          <div className="mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-md text-primary text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] hover:bg-primary/10 transition-colors cursor-default shadow-[0_0_15px_rgba(108,99,255,0.1)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-[0_0_10px_#A3FFE4]"></span>
+          {/* Badge - Luxury Gold */}
+          <div className="mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-md text-primary text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] hover:bg-primary/10 transition-colors cursor-default shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#D4AF37]"></span>
             {c.badge}
           </div>
 
           {/* Headline - max width adjusted for shorter text */}
-          <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold text-white mb-8 tracking-tighter leading-[0.9] max-w-4xl mx-auto drop-shadow-2xl">
+          <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold text-text-light mb-8 tracking-tighter leading-[0.9] max-w-4xl mx-auto drop-shadow-2xl">
              {c.headline}
           </h1>
           
-          <p className="text-lg md:text-2xl text-text-muted mb-12 max-w-2xl mx-auto leading-relaxed font-light tracking-wide">
+          <p className="text-lg md:text-2xl text-accent mb-12 max-w-2xl mx-auto leading-relaxed font-light tracking-wide opacity-90">
             {c.subheadline}
           </p>
 
-          {/* CTAs - Updated colors */}
+          {/* CTAs - Black & Gold */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full sm:w-auto">
-            <a href="#contact" className="w-full sm:w-auto px-10 py-5 rounded-full bg-primary text-white font-bold tracking-wide hover:bg-secondary hover:text-white transition-all hover:scale-105 flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(108,99,255,0.4)]">
+            <a href="#contact" className="w-full sm:w-auto px-10 py-5 rounded-full bg-primary text-black font-bold tracking-wide hover:bg-secondary transition-all hover:scale-105 flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(212,175,55,0.4)]">
               {c.ctaPrimary}
-              <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
+              <ArrowRight className={`w-4 h-4 text-black transition-transform group-hover:translate-x-1 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
             </a>
             <a href="#services" className="w-full sm:w-auto px-10 py-5 rounded-full font-bold text-white border border-border hover:border-primary/50 hover:bg-surface-highlight transition-all flex items-center justify-center gap-2 backdrop-blur-sm tracking-wide">
               {c.ctaSecondary}
@@ -91,15 +91,15 @@ const ServicesSection = () => {
             const Icon = icons[item.iconName as keyof typeof icons] || Workflow;
             return (
               <div key={item.id} className={`group relative p-10 rounded-[2rem] border border-border bg-surface hover:bg-surface-highlight transition-all duration-500 flex flex-col justify-between h-[400px] overflow-hidden ${idx === 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
-                {/* Hover Glow */}
+                {/* Hover Glow Gold */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
                 <div>
-                  <div className="w-14 h-14 bg-surface-highlight rounded-2xl flex items-center justify-center mb-8 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 border border-border group-hover:border-transparent">
+                  <div className="w-14 h-14 bg-surface-highlight rounded-2xl flex items-center justify-center mb-8 text-primary group-hover:bg-primary group-hover:text-black transition-all duration-500 border border-border group-hover:border-transparent">
                     <Icon className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{item.title}</h3>
-                  <p className="text-text-muted leading-relaxed font-light group-hover:text-text-light transition-colors">{item.description}</p>
+                  <p className="text-text-muted leading-relaxed font-light group-hover:text-accent transition-colors">{item.description}</p>
                 </div>
 
                 <div className="border-t border-border pt-6 flex justify-between items-end">
@@ -108,7 +108,7 @@ const ServicesSection = () => {
                              <span key={i} className="text-xs text-text-muted uppercase tracking-wider group-hover:text-primary transition-colors">• {f}</span>
                          ))}
                     </div>
-                    <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                    <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-primary group-hover:text-black transition-all">
                         <ArrowRight className={`w-4 h-4 transform -rotate-45 group-hover:rotate-0 transition-transform duration-500 ${language === 'ar' ? 'rotate-[225deg] group-hover:rotate-180' : ''}`} />
                     </div>
                 </div>
@@ -148,7 +148,7 @@ const IndustrySection = () => {
                <div className="mt-6 pt-6 border-t border-border group-hover:border-border/50">
                  <div className="flex flex-wrap gap-2">
                      {item.kpis.map((kpi, kIdx) => (
-                         <span key={kIdx} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-sm bg-surface-highlight text-text-muted group-hover:text-primary group-hover:bg-primary/10 transition-colors">
+                         <span key={kIdx} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-sm bg-surface-highlight text-text-muted group-hover:text-black group-hover:bg-primary transition-colors">
                              {kpi}
                          </span>
                      ))}
@@ -261,7 +261,7 @@ const PortfolioSection = () => {
                 </div>
 
                 <div className="mt-20 flex justify-center">
-                    <a href="#contact" className="px-12 py-6 bg-primary text-white font-bold rounded-full hover:bg-secondary hover:text-white transition-all hover:scale-105 uppercase tracking-wider text-sm border border-transparent shadow-[0_0_20px_rgba(108,99,255,0.2)]">
+                    <a href="#contact" className="px-12 py-6 bg-primary text-black font-bold rounded-full hover:bg-secondary transition-all hover:scale-105 uppercase tracking-wider text-sm border border-transparent shadow-[0_0_20px_rgba(212,175,55,0.2)]">
                         {c.cta}
                     </a>
                 </div>
@@ -283,11 +283,11 @@ const PricingSection = () => {
           {c.plans.map((plan, idx) => (
             <div key={idx} className={`rounded-[2rem] p-10 relative flex flex-col transition-transform hover:-translate-y-2 duration-500 ${
               plan.isPopular 
-                ? 'bg-surface border border-primary shadow-[0_0_40px_-10px_rgba(108,99,255,0.2)]' 
+                ? 'bg-surface border border-primary shadow-[0_0_40px_-10px_rgba(212,175,55,0.2)]' 
                 : 'bg-surface border border-border text-white hover:border-border/80'
             }`}>
               {plan.isPopular && (
-                <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-6 py-2 rounded-bl-2xl rounded-tr-[2rem] uppercase tracking-wider">
+                <div className="absolute top-0 right-0 bg-primary text-black text-xs font-bold px-6 py-2 rounded-bl-2xl rounded-tr-[2rem] uppercase tracking-wider">
                   Selected
                 </div>
               )}
@@ -314,7 +314,7 @@ const PricingSection = () => {
 
               <button className={`w-full py-5 rounded-full font-bold text-sm tracking-wide transition-all ${
                 plan.isPopular 
-                  ? 'bg-primary text-white hover:bg-secondary hover:text-white shadow-[0_0_15px_rgba(108,99,255,0.4)]' 
+                  ? 'bg-primary text-black hover:bg-secondary shadow-[0_0_15px_rgba(212,175,55,0.4)]' 
                   : 'bg-white text-black hover:bg-gray-200'
               }`}>
                 {plan.cta}
@@ -344,7 +344,7 @@ const ContactSection = () => {
             
             <div className="space-y-12">
               <div className="group flex items-start gap-6">
-                <div className="w-14 h-14 rounded-2xl bg-surface flex items-center justify-center border border-border group-hover:border-primary transition-colors group-hover:shadow-[0_0_15px_rgba(108,99,255,0.2)]">
+                <div className="w-14 h-14 rounded-2xl bg-surface flex items-center justify-center border border-border group-hover:border-primary transition-colors group-hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]">
                     <MapPin className="w-6 h-6 text-white group-hover:text-primary transition-colors" />
                 </div>
                 <div>
@@ -353,7 +353,7 @@ const ContactSection = () => {
                 </div>
               </div>
               <div className="group flex items-start gap-6">
-                <div className="w-14 h-14 rounded-2xl bg-surface flex items-center justify-center border border-border group-hover:border-primary transition-colors group-hover:shadow-[0_0_15px_rgba(108,99,255,0.2)]">
+                <div className="w-14 h-14 rounded-2xl bg-surface flex items-center justify-center border border-border group-hover:border-primary transition-colors group-hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]">
                     <Mail className="w-6 h-6 text-white group-hover:text-primary transition-colors" />
                 </div>
                 <div>
@@ -384,7 +384,7 @@ const ContactSection = () => {
                 <textarea rows={4} placeholder=" " className="peer w-full bg-transparent border-b border-border py-4 text-white focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
                 <label className="absolute left-0 top-4 text-text-muted text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.messageLabel}</label>
               </div>
-              <button type="submit" className="w-full bg-primary text-white font-bold py-5 rounded-full hover:bg-secondary hover:text-white transition-all hover:scale-[1.02] mt-8 text-lg tracking-wide shadow-[0_0_15px_rgba(108,99,255,0.4)]">
+              <button type="submit" className="w-full bg-primary text-black font-bold py-5 rounded-full hover:bg-secondary transition-all hover:scale-[1.02] mt-8 text-lg tracking-wide shadow-[0_0_15px_rgba(212,175,55,0.4)]">
                 {c.submitBtn}
               </button>
             </form>
