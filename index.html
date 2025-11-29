@@ -17,12 +17,15 @@
         theme: {
           extend: {
             colors: {
-              background: '#000000', 
-              surface: '#080808',    
-              primary: '#ffffff',    
-              secondary: '#888888',
-              accent: '#ffffff',     
-              border: '#1f1f1f',     
+              background: '#0B0C0F', // Deep Black / Charcoal
+              surface: '#1A1A1D',    // Dark Grey 1
+              'surface-highlight': '#2A2A2E', // Dark Grey 2
+              primary: '#2D9CFF',    // Electric Gulf Blue
+              secondary: '#00E5FF',  // Aqua Turquoise Glow
+              accent: '#8F7CFF',     // Cyber Violet
+              border: '#2A2A2E',     // Neutral border
+              'text-muted': '#7A7A85', // Mid Grey
+              'text-light': '#E7E7E7', // Light Grey
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
@@ -30,8 +33,8 @@
             },
             backgroundImage: {
               'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-              'grid-pattern': "linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px)",
-              'subtle-glow': "conic-gradient(from 180deg at 50% 50%, #1a1a1a 0deg, #000000 180deg, #1a1a1a 360deg)",
+              'grid-pattern': "linear-gradient(to right, #2A2A2E 1px, transparent 1px), linear-gradient(to bottom, #2A2A2E 1px, transparent 1px)",
+              'subtle-glow': "conic-gradient(from 180deg at 50% 50%, #1A1A1D 0deg, #0B0C0F 180deg, #1A1A1D 360deg)",
             },
             animation: {
               'spin-slow': 'spin 20s linear infinite',
@@ -54,8 +57,8 @@
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       
       body {
-        background-color: #000000;
-        color: #ffffff;
+        background-color: #0B0C0F;
+        color: #FFFFFF;
       }
       
       .bg-grid {
@@ -73,22 +76,22 @@
         z-index: 0;
       }
     </style>
-<script type="importmap">
+  <script type="importmap">
 {
   "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
-    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
     "vite": "https://aistudiocdn.com/vite@^7.2.4",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
   }
 }
 </script>
 </head>
-  <body class="antialiased selection:bg-white selection:text-black">
+  <body class="antialiased selection:bg-primary selection:text-white">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

@@ -42,35 +42,35 @@ const AIChatWidget: React.FC = () => {
   return (
     <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end">
       {isOpen && (
-        <div className="mb-6 w-[350px] sm:w-[400px] bg-black rounded-[2rem] shadow-2xl border border-white/10 overflow-hidden flex flex-col h-[600px] transition-all duration-300 transform origin-bottom-right animate-in fade-in slide-in-from-bottom-10">
+        <div className="mb-6 w-[350px] sm:w-[400px] bg-surface rounded-[2rem] shadow-2xl border border-border overflow-hidden flex flex-col h-[600px] transition-all duration-300 transform origin-bottom-right animate-in fade-in slide-in-from-bottom-10">
           
           {/* Header */}
-          <div className="bg-[#0a0a0a] p-5 flex justify-between items-center border-b border-white/5">
+          <div className="bg-surface-highlight p-5 flex justify-between items-center border-b border-border">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/5">
-                <Bot className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/20">
+                <Bot className="w-5 h-5 text-primary" />
               </div>
               <div>
                 <span className="font-bold text-white text-sm block">AI Assistant</span>
-                <span className="text-[10px] text-green-500 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                <span className="text-[10px] text-secondary flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse shadow-[0_0_5px_#00E5FF]"></span>
                     Online
                 </span>
               </div>
             </div>
-            <button onClick={() => setIsOpen(false)} className="hover:bg-white/10 p-2 rounded-full text-gray-400 hover:text-white transition-colors">
+            <button onClick={() => setIsOpen(false)} className="hover:bg-white/10 p-2 rounded-full text-text-muted hover:text-white transition-colors">
               <X className="w-5 h-5" />
             </button>
           </div>
           
           {/* Messages */}
-          <div className="flex-1 p-5 overflow-y-auto bg-black scroll-smooth" ref={scrollRef}>
+          <div className="flex-1 p-5 overflow-y-auto bg-background scroll-smooth" ref={scrollRef}>
             {messages.map((msg, idx) => (
               <div key={idx} className={`mb-6 flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] p-4 text-sm leading-relaxed tracking-wide ${
                   msg.role === 'user' 
-                    ? 'bg-white text-black rounded-2xl rounded-tr-sm font-medium' 
-                    : 'bg-[#111] text-gray-300 border border-white/10 rounded-2xl rounded-tl-sm'
+                    ? 'bg-primary text-white rounded-2xl rounded-tr-sm font-medium shadow-[0_0_10px_rgba(45,156,255,0.2)]' 
+                    : 'bg-surface-highlight text-gray-300 border border-border rounded-2xl rounded-tl-sm'
                 }`}>
                   {msg.text}
                 </div>
@@ -78,16 +78,16 @@ const AIChatWidget: React.FC = () => {
             ))}
             {isLoading && (
               <div className="flex justify-start mb-4">
-                <div className="bg-[#111] border border-white/10 p-4 rounded-2xl rounded-tl-sm flex gap-1.5 items-center">
-                  <Sparkles className="w-3 h-3 text-gray-500 animate-spin-slow" />
-                  <span className="text-xs text-gray-500">Thinking...</span>
+                <div className="bg-surface-highlight border border-border p-4 rounded-2xl rounded-tl-sm flex gap-1.5 items-center">
+                  <Sparkles className="w-3 h-3 text-secondary animate-spin-slow" />
+                  <span className="text-xs text-text-muted">Thinking...</span>
                 </div>
               </div>
             )}
           </div>
 
           {/* Input */}
-          <div className="p-4 bg-black border-t border-white/5 flex gap-2">
+          <div className="p-4 bg-surface border-t border-border flex gap-2">
             <div className="relative flex-1">
                 <input
                 type="text"
@@ -95,14 +95,14 @@ const AIChatWidget: React.FC = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                 placeholder={content.placeholder}
-                className="w-full bg-[#0a0a0a] border border-white/10 rounded-full px-6 py-4 text-sm text-white focus:outline-none focus:border-white/30 placeholder-gray-600 transition-colors pr-12"
+                className="w-full bg-background border border-border rounded-full px-6 py-4 text-sm text-white focus:outline-none focus:border-primary placeholder-text-muted transition-colors pr-12"
                 disabled={isLoading}
                 />
             </div>
             <button 
               onClick={handleSend}
               disabled={isLoading || !input.trim()}
-              className="bg-white text-black w-12 h-12 rounded-full flex items-center justify-center hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105"
+              className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-secondary hover:text-black disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105"
             >
               <Send className={`w-5 h-5 ${language === 'ar' ? 'rotate-180' : ''}`} />
             </button>
@@ -112,7 +112,7 @@ const AIChatWidget: React.FC = () => {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-white hover:bg-gray-200 text-black w-16 h-16 rounded-full shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all transform hover:scale-105 flex items-center justify-center z-50 group"
+        className="bg-primary hover:bg-secondary text-white hover:text-black w-16 h-16 rounded-full shadow-[0_0_30px_rgba(45,156,255,0.4)] transition-all transform hover:scale-105 flex items-center justify-center z-50 group border border-white/10"
       >
         {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
       </button>

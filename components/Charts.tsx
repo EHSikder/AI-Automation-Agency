@@ -23,16 +23,16 @@ export const RechartsWrapper: React.FC = () => {
             bottom: 5,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#222" vertical={false} />
-          <XAxis dataKey="name" fontSize={10} stroke="#444" tickLine={false} axisLine={false} tick={{fill: '#666'}} />
-          <YAxis fontSize={10} stroke="#444" tickLine={false} axisLine={false} tickFormatter={(value) => `$${value}`} tick={{fill: '#666'}} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#2A2A2E" vertical={false} />
+          <XAxis dataKey="name" fontSize={10} stroke="#444" tickLine={false} axisLine={false} tick={{fill: '#7A7A85'}} />
+          <YAxis fontSize={10} stroke="#444" tickLine={false} axisLine={false} tickFormatter={(value) => `$${value}`} tick={{fill: '#7A7A85'}} />
           <Tooltip 
-            contentStyle={{ backgroundColor: '#000', borderRadius: '8px', border: '1px solid #222', color: '#fff' }}
-            cursor={{fill: '#ffffff10'}}
+            contentStyle={{ backgroundColor: '#1A1A1D', borderRadius: '8px', border: '1px solid #2A2A2E', color: '#fff' }}
+            cursor={{fill: '#2D9CFF20'}}
             itemStyle={{ fontSize: '12px' }}
           />
-          <Bar dataKey="cost" fill="#222" radius={[4, 4, 0, 0]} name="Cost" />
-          <Bar dataKey="savings" fill="#fff" radius={[4, 4, 0, 0]} name="Savings" />
+          <Bar dataKey="cost" fill="#2A2A2E" radius={[4, 4, 0, 0]} name="Cost" />
+          <Bar dataKey="savings" fill="#2D9CFF" radius={[4, 4, 0, 0]} name="Savings" />
         </BarChart>
       </ResponsiveContainer>
     </div>
