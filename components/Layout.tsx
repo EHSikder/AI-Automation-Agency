@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
 import { CONTENT, COMPANY_INFO } from '../constants';
-import { Menu, X, Globe, ArrowRight } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { language, toggleLanguage } = useLanguage();
@@ -19,14 +19,14 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col relative overflow-x-hidden bg-background text-text-light font-sans selection:bg-primary selection:text-black">
-      {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'py-4' : 'py-6'}`}>
+    <div className="min-h-screen flex flex-col relative overflow-x-hidden bg-transparent text-text-light font-sans selection:bg-primary selection:text-black">
+      {/* Navigation - pointer-events-none on wrapper to pass clicks to background */}
+      <nav className={`fixed w-full z-50 transition-all duration-500 pointer-events-none ${scrolled ? 'py-4' : 'py-6'}`}>
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`rounded-full border border-border/50 backdrop-blur-md bg-background/60 px-6 transition-all duration-500 ${scrolled ? 'bg-background/90 border-primary/20 shadow-[0_0_20px_-10px_rgba(212,175,55,0.1)]' : ''}`}>
+          <div className={`rounded-full border border-border/50 backdrop-blur-md bg-background/60 px-6 transition-all duration-500 pointer-events-auto ${scrolled ? 'bg-background/90 border-primary/20 shadow-[0_0_20px_-10px_rgba(212,175,55,0.1)]' : ''}`}>
             <div className="flex justify-between items-center h-14">
               {/* Logo */}
-              <div className="flex-shrink-0 flex items-center cursor-pointer gap-2 group" onClick={() => window.scrollTo(0,0)}>
+              <div className="flex-shrink-0 flex items-center cursor-pointer gap-2 group pointer-events-auto" onClick={() => window.scrollTo(0,0)}>
                 <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-black font-bold group-hover:scale-90 transition-transform duration-300 shadow-[0_0_15px_rgba(212,175,55,0.4)]">
                   <div className="w-2 h-2 bg-black rounded-full"></div>
                 </div>
@@ -34,7 +34,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               </div>
 
               {/* Desktop Menu */}
-              <div className="hidden md:flex items-center space-x-1 rtl:space-x-reverse">
+              <div className="hidden md:flex items-center space-x-1 rtl:space-x-reverse pointer-events-auto">
                 {content.nav.map((item) => (
                   <a 
                     key={item.id} 
@@ -47,7 +47,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               </div>
 
               {/* Actions */}
-              <div className="hidden md:flex items-center gap-4">
+              <div className="hidden md:flex items-center gap-4 pointer-events-auto">
                 <button 
                   onClick={toggleLanguage}
                   className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-border text-xs text-text-muted hover:text-primary hover:border-primary/50 transition-all"
@@ -64,7 +64,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               </div>
 
               {/* Mobile Button */}
-              <div className="md:hidden flex items-center gap-4">
+              <div className="md:hidden flex items-center gap-4 pointer-events-auto">
                 <button onClick={toggleLanguage} className="text-white text-sm hover:text-primary">
                     <span className="font-bold">{language === 'en' ? 'ع' : 'En'}</span>
                 </button>
@@ -78,7 +78,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-24 left-4 right-4 bg-surface border border-border rounded-2xl p-6 shadow-2xl z-50 backdrop-blur-xl">
+          <div className="md:hidden absolute top-24 left-4 right-4 bg-surface border border-border rounded-2xl p-6 shadow-2xl z-50 backdrop-blur-xl pointer-events-auto">
             <div className="flex flex-col space-y-4">
               {content.nav.map((item) => (
                 <a 
@@ -103,13 +103,14 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       </nav>
 
       {/* Main Content */}
-      <main className="flex-grow">
+      <main className="flex-grow pointer-events-none">
+        {/* Children components need to explicitly enable pointer-events-auto for interactive elements */}
         {children}
       </main>
 
       {/* Footer */}
-      <footer className="bg-background text-text-muted py-20 border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <footer className="bg-background/80 backdrop-blur-md text-text-muted py-20 border-t border-border pointer-events-none">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pointer-events-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-1">
               <span className="text-xl font-bold text-white block mb-6 tracking-tight">GulfAutomate</span>

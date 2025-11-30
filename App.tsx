@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout } from './components/Layout';
 import { LanguageProvider, useLanguage } from './components/LanguageContext';
 import AIChatWidget from './components/AIChatWidget';
+import Background3D from './components/Background3D';
 import { CONTENT } from './constants';
 import { ArrowRight, Check, Phone, MessageSquare, Workflow, Zap, MapPin, Mail, Sparkles, Box, LayoutGrid, Cpu, Clock, Trophy, BarChart3, Quote } from 'lucide-react';
 import { RechartsWrapper } from './components/Charts';
@@ -9,7 +10,7 @@ import { RechartsWrapper } from './components/Charts';
 // --- Shared Components ---
 
 const SectionHeader = ({ title, subtitle, align = 'center' }: { title: string, subtitle: string, align?: 'center' | 'left' }) => (
-  <div className={`mb-20 ${align === 'center' ? 'text-center' : 'text-left'}`}>
+  <div className={`mb-20 ${align === 'center' ? 'text-center' : 'text-left'} pointer-events-auto`}>
     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">{title}</h2>
     <p className="text-text-muted text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-80">{subtitle}</p>
   </div>
@@ -23,44 +24,41 @@ const HeroSection = () => {
   const isRTL = language === 'ar';
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-background">
-      {/* Dynamic Background */}
-      <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-[0.05] z-0 pointer-events-none"></div>
-      
-      {/* Spotlight Effect - Updated to Gold */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary opacity-[0.08] blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden pointer-events-none">
+      {/* Spotlight Effect */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary opacity-[0.05] blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="flex flex-col items-center text-center">
           
-          {/* Badge - Luxury Gold */}
-          <div className="mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-md text-primary text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] hover:bg-primary/10 transition-colors cursor-default shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+          {/* Badge */}
+          <div className="mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-black/40 backdrop-blur-md text-primary text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] hover:bg-primary/10 transition-colors shadow-[0_0_15px_rgba(212,175,55,0.1)] pointer-events-auto cursor-default">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#D4AF37]"></span>
             {c.badge}
           </div>
 
-          {/* Headline - max width adjusted for shorter text */}
-          <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold text-text-light mb-8 tracking-tighter leading-[0.9] max-w-4xl mx-auto drop-shadow-2xl">
+          {/* Headline - pointer-events-auto allows text selection */}
+          <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold text-text-light mb-8 tracking-tighter leading-[0.9] max-w-4xl mx-auto drop-shadow-2xl pointer-events-auto">
              {c.headline}
           </h1>
           
-          <p className="text-lg md:text-2xl text-accent mb-12 max-w-2xl mx-auto leading-relaxed font-light tracking-wide opacity-90">
+          <p className="text-lg md:text-2xl text-accent mb-12 max-w-2xl mx-auto leading-relaxed font-light tracking-wide opacity-90 pointer-events-auto">
             {c.subheadline}
           </p>
 
-          {/* CTAs - Black & Gold */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full sm:w-auto">
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full sm:w-auto pointer-events-auto">
             <a href="#contact" className="w-full sm:w-auto px-10 py-5 rounded-full bg-primary text-black font-bold tracking-wide hover:bg-secondary transition-all hover:scale-105 flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(212,175,55,0.4)]">
               {c.ctaPrimary}
               <ArrowRight className={`w-4 h-4 text-black transition-transform group-hover:translate-x-1 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
             </a>
-            <a href="#services" className="w-full sm:w-auto px-10 py-5 rounded-full font-bold text-white border border-border hover:border-primary/50 hover:bg-surface-highlight transition-all flex items-center justify-center gap-2 backdrop-blur-sm tracking-wide">
+            <a href="#services" className="w-full sm:w-auto px-10 py-5 rounded-full font-bold text-white border border-border hover:border-primary/50 hover:bg-surface-highlight/50 transition-all flex items-center justify-center gap-2 backdrop-blur-sm tracking-wide bg-black/30">
               {c.ctaSecondary}
             </a>
           </div>
 
           {/* Tech Scroll Indicator */}
-          <div className="mt-24 flex flex-col items-center gap-4 opacity-30">
+          <div className="mt-24 flex flex-col items-center gap-4 opacity-30 pointer-events-auto">
              <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-primary to-transparent"></div>
              <span className="text-[10px] uppercase tracking-widest text-primary">Scroll</span>
           </div>
@@ -81,7 +79,9 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="services" className="py-40 bg-background relative">
+    <section id="services" className="py-40 relative pointer-events-none">
+      <div className="absolute inset-0 bg-background/95 -z-10"></div>
+      
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} align="left" />
 
@@ -90,8 +90,8 @@ const ServicesSection = () => {
           {c.items.map((item, idx) => {
             const Icon = icons[item.iconName as keyof typeof icons] || Workflow;
             return (
-              <div key={item.id} className={`group relative p-10 rounded-[2rem] border border-border bg-surface hover:bg-surface-highlight transition-all duration-500 flex flex-col justify-between h-[400px] overflow-hidden ${idx === 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
-                {/* Hover Glow Gold */}
+              <div key={item.id} className={`group relative p-10 rounded-[2rem] border border-border bg-surface/80 backdrop-blur-sm hover:bg-surface-highlight/90 transition-all duration-500 flex flex-col justify-between h-[400px] overflow-hidden pointer-events-auto ${idx === 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
+                {/* Hover Glow */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
                 <div>
@@ -126,14 +126,15 @@ const IndustrySection = () => {
   const c = CONTENT[language].industries;
 
   return (
-    <section id="industries" className="py-40 bg-background relative border-t border-border">
+    <section id="industries" className="py-40 relative border-t border-border/50 pointer-events-none">
+      <div className="absolute inset-0 bg-background/95 -z-10"></div>
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} />
         
         {/* Text-Only Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {c.items.map((item, idx) => (
-            <div key={item.id} className="group p-8 rounded-[1.5rem] border border-border bg-surface hover:border-primary/50 transition-all duration-300 flex flex-col justify-between h-[300px]">
+            <div key={item.id} className="group p-8 rounded-[1.5rem] border border-border bg-surface/80 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 flex flex-col justify-between h-[300px] pointer-events-auto">
                <div>
                   <div className="mb-6 flex justify-between items-center">
                     <span className="text-xs font-mono text-text-muted group-hover:text-primary transition-colors">
@@ -168,13 +169,14 @@ const HowItWorksSection = () => {
     const isRTL = language === 'ar';
 
     return (
-        <section id="how-it-works" className="py-40 bg-background relative border-t border-border">
+        <section id="how-it-works" className="py-40 relative border-t border-border/50 pointer-events-none">
+            <div className="absolute inset-0 bg-background/95 -z-10"></div>
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} align="center" />
                 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {c.steps.map((step, idx) => (
-                        <div key={idx} className="group p-8 rounded-[2rem] bg-surface border border-border hover:border-primary/40 hover:bg-surface-highlight transition-all duration-300 flex flex-col h-full relative overflow-hidden">
+                        <div key={idx} className="group p-8 rounded-[2rem] bg-surface/80 backdrop-blur-md border border-border hover:border-primary/40 hover:bg-surface-highlight/90 transition-all duration-300 flex flex-col h-full relative overflow-hidden pointer-events-auto">
                             {/* Number BG */}
                             <span className="absolute -right-4 -top-4 text-9xl font-bold text-white/[0.02] select-none group-hover:text-primary/[0.05] transition-colors">{step.number}</span>
                             
@@ -210,13 +212,14 @@ const PortfolioSection = () => {
     const c = CONTENT[language].portfolio;
 
     return (
-        <section id="portfolio" className="py-40 bg-background relative border-t border-border">
+        <section id="portfolio" className="py-40 relative border-t border-border/50 pointer-events-none">
+            <div className="absolute inset-0 bg-background/95 -z-10"></div>
              <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} align="left" />
                 
                 <div className="flex flex-col gap-20">
                     {c.items.map((item, idx) => (
-                        <div key={item.id} className="grid lg:grid-cols-12 gap-12 items-start border-b border-border pb-20 last:border-0 last:pb-0">
+                        <div key={item.id} className="grid lg:grid-cols-12 gap-12 items-start border-b border-border/30 pb-20 last:border-0 last:pb-0 pointer-events-auto">
                             {/* Content Side */}
                             <div className={`lg:col-span-5 flex flex-col gap-8 ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
                                 <div>
@@ -228,11 +231,11 @@ const PortfolioSection = () => {
                                 </div>
 
                                 <div className="space-y-6">
-                                    <div className="bg-surface p-6 rounded-2xl border border-border">
+                                    <div className="bg-surface/60 backdrop-blur-sm p-6 rounded-2xl border border-border">
                                         <h4 className="text-sm text-text-muted uppercase tracking-wide mb-2">The Challenge</h4>
                                         <p className="text-text-light font-light leading-relaxed">{item.problem}</p>
                                     </div>
-                                    <div className="bg-surface p-6 rounded-2xl border border-border">
+                                    <div className="bg-surface/60 backdrop-blur-sm p-6 rounded-2xl border border-border">
                                         <h4 className="text-sm text-text-muted uppercase tracking-wide mb-2">The Solution</h4>
                                         <p className="text-text-light font-light leading-relaxed">{item.solution}</p>
                                     </div>
@@ -260,7 +263,7 @@ const PortfolioSection = () => {
                     ))}
                 </div>
 
-                <div className="mt-20 flex justify-center">
+                <div className="mt-20 flex justify-center pointer-events-auto">
                     <a href="#contact" className="px-12 py-6 bg-primary text-black font-bold rounded-full hover:bg-secondary transition-all hover:scale-105 uppercase tracking-wider text-sm border border-transparent shadow-[0_0_20px_rgba(212,175,55,0.2)]">
                         {c.cta}
                     </a>
@@ -275,16 +278,17 @@ const PricingSection = () => {
   const c = CONTENT[language].pricing;
 
   return (
-    <section id="pricing" className="py-40 bg-background relative border-t border-border">
+    <section id="pricing" className="py-40 relative border-t border-border/50 pointer-events-none">
+      <div className="absolute inset-0 bg-background/95 -z-10"></div>
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} />
         
         <div className="grid lg:grid-cols-3 gap-8 items-start">
           {c.plans.map((plan, idx) => (
-            <div key={idx} className={`rounded-[2rem] p-10 relative flex flex-col transition-transform hover:-translate-y-2 duration-500 ${
+            <div key={idx} className={`rounded-[2rem] p-10 relative flex flex-col transition-transform hover:-translate-y-2 duration-500 pointer-events-auto ${
               plan.isPopular 
-                ? 'bg-surface border border-primary shadow-[0_0_40px_-10px_rgba(212,175,55,0.2)]' 
-                : 'bg-surface border border-border text-white hover:border-border/80'
+                ? 'bg-surface/90 border border-primary shadow-[0_0_40px_-10px_rgba(212,175,55,0.2)] backdrop-blur-md' 
+                : 'bg-surface/60 border border-border text-white hover:border-border/80 backdrop-blur-md'
             }`}>
               {plan.isPopular && (
                 <div className="absolute top-0 right-0 bg-primary text-black text-xs font-bold px-6 py-2 rounded-bl-2xl rounded-tr-[2rem] uppercase tracking-wider">
@@ -333,12 +337,14 @@ const ContactSection = () => {
   const isRTL = language === 'ar';
 
   return (
-    <section id="contact" className="py-40 bg-background border-t border-border relative">
+    <section id="contact" className="py-40 border-t border-border relative pointer-events-none">
+       {/* Darker background for form readability */}
+      <div className="absolute inset-0 bg-background/98 -z-10"></div>
       <div className="absolute left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none"></div>
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-24">
-          <div>
+          <div className="pointer-events-auto">
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-none">{c.title}</h2>
             <p className="text-xl text-text-muted mb-16 font-light max-w-md">{c.subtitle}</p>
             
@@ -364,7 +370,7 @@ const ContactSection = () => {
             </div>
           </div>
 
-          <div className="bg-surface p-12 rounded-[3rem] border border-border shadow-2xl">
+          <div className="bg-surface/90 backdrop-blur-md p-12 rounded-[3rem] border border-border shadow-2xl pointer-events-auto">
             <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="relative group">
@@ -402,6 +408,7 @@ function App() {
   return (
     <LanguageProvider>
       <Layout>
+        <Background3D /> {/* Placed at top of layout stack, behind content via CSS z-index */}
         <HeroSection />
         <ServicesSection />
         <IndustrySection />

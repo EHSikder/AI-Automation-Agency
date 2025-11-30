@@ -33,8 +33,6 @@
             },
             backgroundImage: {
               'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-              'grid-pattern': "linear-gradient(to right, #1A1A1D 1px, transparent 1px), linear-gradient(to bottom, #1A1A1D 1px, transparent 1px)",
-              'subtle-glow': "conic-gradient(from 180deg at 50% 50%, #1A1A1D 0deg, #000000 180deg, #1A1A1D 360deg)",
               'gold-gradient': "linear-gradient(135deg, #D4AF37 0%, #F1D27A 100%)",
             },
             animation: {
@@ -61,12 +59,6 @@
         background-color: #000000;
         color: #FCFAF5;
       }
-      
-      .bg-grid {
-        background-size: 50px 50px;
-        mask-image: linear-gradient(to bottom, transparent, 5%, white, 95%, transparent);
-        -webkit-mask-image: linear-gradient(to bottom, transparent, 5%, white, 95%, transparent);
-      }
 
       /* Glass Noise Texture */
       .noise {
@@ -77,17 +69,20 @@
         z-index: 0;
       }
     </style>
-  <script type="importmap">
+<script type="importmap">
 {
   "imports": {
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "@react-three/fiber": "https://aistudiocdn.com/@react-three/fiber@^9.4.2",
     "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
     "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "three": "https://aistudiocdn.com/three@^0.181.2",
     "vite": "https://aistudiocdn.com/vite@^7.2.4",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+    "@react-three/drei": "https://aistudiocdn.com/@react-three/drei@^10.7.7"
   }
 }
 </script>
