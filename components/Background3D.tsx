@@ -10,22 +10,27 @@ const InteractiveObject = () => {
   const [clicked, setClicked] = useState(false);
 
   useFrame((state, delta) => {
+    // FIX: Clamp delta to max 0.1s. 
+    // This ignores large time gaps (like when user switches tabs), preventing the "fast spin" effect.
+    const dt = Math.min(delta, 0.1);
+
     if (meshRef.current) {
-      // Basic rotation
-      meshRef.current.rotation.x += delta * 0.2;
-      meshRef.current.rotation.y += delta * 0.25;
+      // Basic rotation using safe delta
+      meshRef.current.rotation.x += dt * 0.2;
+      meshRef.current.rotation.y += dt * 0.25;
 
       // Mouse interaction (Parallax look)
       // R3F state.mouse gives normalized coordinates (-1 to 1)
       const mouseX = state.mouse.x * 2;
       const mouseY = state.mouse.y * 2;
       
-      meshRef.current.rotation.x += (mouseY * 0.5 - meshRef.current.rotation.x) * delta;
-      meshRef.current.rotation.y += (mouseX * 0.5 - meshRef.current.rotation.y) * delta;
+      // Smooth lerp for mouse interaction using safe delta
+      meshRef.current.rotation.x += (mouseY * 0.5 - meshRef.current.rotation.x) * dt;
+      meshRef.current.rotation.y += (mouseX * 0.5 - meshRef.current.rotation.y) * dt;
 
       // Click reaction (Spin fast)
       if (clicked) {
-        meshRef.current.rotation.z += delta * 10;
+        meshRef.current.rotation.z += dt * 10;
       }
     }
   });
@@ -73,6 +78,11 @@ const Particles = () => {
   const count = 100;
   const mesh = useRef<THREE.InstancedMesh>(null);
   
+  // FIX: Track accumulated time manually instead of using absolute clock time.
+  // This ensures that when the tab is hidden, time effectively "pauses" and resumes
+  // from the exact same spot when visible again.
+  const time = useRef(0);
+  
   const dummy = new THREE.Object3D();
   const particles = useRef(new Array(count).fill(0).map(() => ({
     position: [
@@ -84,11 +94,14 @@ const Particles = () => {
     speed: Math.random() * 0.02 + 0.005
   })));
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
     if (mesh.current) {
+        // Update custom time with clamped delta
+        const dt = Math.min(delta, 0.1);
+        time.current += dt;
+        const t = time.current;
+        
         particles.current.forEach((particle, i) => {
-            const t = state.clock.getElapsedTime();
-            
             // Update Y position for floating effect
             dummy.position.set(
                 (particle.position[0] as number),
