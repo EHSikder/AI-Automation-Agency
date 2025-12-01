@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GulfAutomate AI - Enterprise Automation</title>
+    <title>AIstylia - Enterprise Automation</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,15 +17,15 @@
         theme: {
           extend: {
             colors: {
-              background: '#000000', // Black
-              surface: '#171717',    // Onyx
-              'surface-highlight': '#1A1A1D', // Graphite
-              primary: '#D4AF37',    // Gold Metallic
-              secondary: '#F1D27A',  // Soft Gold Gradient
-              accent: '#F5EAD4',     // Champagne Cream
-              border: '#333333',     // Dark Neutral Border
-              'text-muted': '#A1A1AA', // Zinc 400 (Neutral Grey)
-              'text-light': '#FCFAF5', // Warm White
+              background: '#0A1A2F', // Deep Navy
+              surface: '#2B2F36',    // Graphite
+              'surface-highlight': '#3A3F4A', // Slate Grey
+              primary: '#6C63FF',    // Electric Purple
+              secondary: '#30C6FF',  // Blue Cyan
+              accent: '#A3FFE4',     // Mint Glow
+              border: '#3A3F4A',     // Slate Grey
+              'text-muted': '#94A3B8', // Slate Grey Light / Muted
+              'text-light': '#FFFFFF', // White
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
@@ -33,7 +33,7 @@
             },
             backgroundImage: {
               'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-              'gold-gradient': "linear-gradient(135deg, #D4AF37 0%, #F1D27A 100%)",
+              'brand-gradient': "linear-gradient(135deg, #6C63FF 0%, #30C6FF 100%)",
             },
             animation: {
               'spin-slow': 'spin 20s linear infinite',
@@ -56,8 +56,8 @@
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       
       body {
-        background-color: #000000;
-        color: #FCFAF5;
+        background-color: #0A1A2F;
+        color: #FFFFFF;
       }
 
       /* Glass Noise Texture */
@@ -72,22 +72,22 @@
 <script type="importmap">
 {
   "imports": {
+    "vite": "https://aistudiocdn.com/vite@^7.2.6",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
     "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "@react-three/drei": "https://aistudiocdn.com/@react-three/drei@^10.7.7",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "@react-three/fiber": "https://aistudiocdn.com/@react-three/fiber@^9.4.2",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "@react-three/fiber": "https://aistudiocdn.com/@react-three/fiber@^9.4.2",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
-    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "three": "https://aistudiocdn.com/three@^0.181.2",
-    "vite": "https://aistudiocdn.com/vite@^7.2.4",
-    "@react-three/drei": "https://aistudiocdn.com/@react-three/drei@^10.7.7"
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "three": "https://aistudiocdn.com/three@^0.181.2"
   }
 }
 </script>
 </head>
-  <body class="antialiased selection:bg-primary selection:text-black">
+  <body class="antialiased selection:bg-primary selection:text-white">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

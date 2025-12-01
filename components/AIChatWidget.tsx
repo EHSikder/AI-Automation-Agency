@@ -53,7 +53,7 @@ const AIChatWidget: React.FC = () => {
               <div>
                 <span className="font-bold text-white text-sm block">AI Assistant</span>
                 <span className="text-[10px] text-secondary flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse shadow-[0_0_5px_#F1D27A]"></span>
+                    <span className="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse shadow-[0_0_5px_#30C6FF]"></span>
                     Online
                 </span>
               </div>
@@ -69,7 +69,7 @@ const AIChatWidget: React.FC = () => {
               <div key={idx} className={`mb-6 flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] p-4 text-sm leading-relaxed tracking-wide ${
                   msg.role === 'user' 
-                    ? 'bg-primary text-black rounded-2xl rounded-tr-sm font-medium shadow-[0_0_10px_rgba(212,175,55,0.2)]' 
+                    ? 'bg-primary text-white rounded-2xl rounded-tr-sm font-medium shadow-[0_0_10px_rgba(108,99,255,0.2)]' 
                     : 'bg-surface-highlight text-gray-300 border border-border rounded-2xl rounded-tl-sm'
                 }`}>
                   {msg.text}
@@ -102,7 +102,7 @@ const AIChatWidget: React.FC = () => {
             <button 
               onClick={handleSend}
               disabled={isLoading || !input.trim()}
-              className="bg-primary text-black w-12 h-12 rounded-full flex items-center justify-center hover:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105"
+              className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105"
             >
               <Send className={`w-5 h-5 ${language === 'ar' ? 'rotate-180' : ''}`} />
             </button>
@@ -112,7 +112,7 @@ const AIChatWidget: React.FC = () => {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-primary hover:bg-secondary text-black w-16 h-16 rounded-full shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all transform hover:scale-105 flex items-center justify-center z-50 group border border-white/10"
+        className="bg-primary hover:bg-secondary text-white w-16 h-16 rounded-full shadow-[0_0_30px_rgba(108,99,255,0.4)] transition-all transform hover:scale-105 flex items-center justify-center z-50 group border border-white/10"
       >
         {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
       </button>

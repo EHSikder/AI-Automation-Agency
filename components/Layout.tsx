@@ -19,18 +19,18 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col relative overflow-x-hidden bg-transparent text-text-light font-sans selection:bg-primary selection:text-black">
+    <div className="min-h-screen flex flex-col relative overflow-x-hidden bg-transparent text-text-light font-sans selection:bg-primary selection:text-white">
       {/* Navigation - pointer-events-none on wrapper to pass clicks to background */}
       <nav className={`fixed w-full z-50 transition-all duration-500 pointer-events-none ${scrolled ? 'py-4' : 'py-6'}`}>
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`rounded-full border border-border/50 backdrop-blur-md bg-background/60 px-6 transition-all duration-500 pointer-events-auto ${scrolled ? 'bg-background/90 border-primary/20 shadow-[0_0_20px_-10px_rgba(212,175,55,0.1)]' : ''}`}>
+          <div className={`rounded-full border border-border/50 backdrop-blur-md bg-background/60 px-6 transition-all duration-500 pointer-events-auto ${scrolled ? 'bg-background/90 border-primary/20 shadow-[0_0_20px_-10px_rgba(108,99,255,0.2)]' : ''}`}>
             <div className="flex justify-between items-center h-14">
               {/* Logo */}
               <div className="flex-shrink-0 flex items-center cursor-pointer gap-2 group pointer-events-auto" onClick={() => window.scrollTo(0,0)}>
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-black font-bold group-hover:scale-90 transition-transform duration-300 shadow-[0_0_15px_rgba(212,175,55,0.4)]">
-                  <div className="w-2 h-2 bg-black rounded-full"></div>
+                <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold group-hover:scale-90 transition-transform duration-300 shadow-[0_0_15px_rgba(108,99,255,0.4)]">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
                 </div>
-                <span className="font-bold text-lg tracking-tight text-white group-hover:text-primary transition-colors">GulfAutomate</span>
+                <span className="font-bold text-lg tracking-tight text-white group-hover:text-primary transition-colors">AIstylia</span>
               </div>
 
               {/* Desktop Menu */}
@@ -39,7 +39,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                   <a 
                     key={item.id} 
                     href={item.href} 
-                    className="px-5 py-2 text-sm text-text-muted hover:text-primary font-medium transition-colors hover:bg-surface-highlight/50 rounded-full"
+                    className="px-5 py-2 text-sm text-text-muted hover:text-white font-medium transition-colors hover:bg-surface-highlight/50 rounded-full"
                   >
                     {item.label}
                   </a>
@@ -50,14 +50,14 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               <div className="hidden md:flex items-center gap-4 pointer-events-auto">
                 <button 
                   onClick={toggleLanguage}
-                  className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-border text-xs text-text-muted hover:text-primary hover:border-primary/50 transition-all"
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-border text-xs text-text-muted hover:text-white hover:border-primary/50 transition-all"
                 >
                   <Globe className="w-3 h-3" />
                   <span>{language === 'en' ? 'العربية' : 'English'}</span>
                 </button>
                 <a 
                   href="#contact" 
-                  className="bg-primary text-black px-6 py-2 rounded-full text-xs font-bold hover:bg-secondary transition-all flex items-center gap-2 tracking-wide uppercase shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_25px_rgba(241,210,122,0.5)]"
+                  className="bg-primary text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-secondary transition-all flex items-center gap-2 tracking-wide uppercase shadow-[0_0_20px_rgba(108,99,255,0.3)] hover:shadow-[0_0_25px_rgba(48,198,255,0.5)]"
                 >
                   {content.hero.ctaPrimary}
                 </a>
@@ -93,7 +93,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               <a 
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="bg-primary text-black text-center py-3 rounded-full font-bold mt-4"
+                className="bg-primary text-white text-center py-3 rounded-full font-bold mt-4"
               >
                 {content.hero.ctaPrimary}
               </a>
@@ -113,7 +113,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pointer-events-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-1">
-              <span className="text-xl font-bold text-white block mb-6 tracking-tight">GulfAutomate</span>
+              <span className="text-xl font-bold text-white block mb-6 tracking-tight">AIstylia</span>
               <p className="text-sm leading-relaxed mb-6 opacity-60">
                 {language === 'en' 
                   ? "Architecting the future of Gulf enterprise through intelligent automation layers."
@@ -149,7 +149,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             </div>
           </div>
           <div className="border-t border-border mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-40">
-            <p>&copy; {new Date().getFullYear()} GulfAutomate AI.</p>
+            <p>&copy; {new Date().getFullYear()} AIstylia.</p>
             <div className="flex space-x-6 mt-4 md:mt-0 rtl:space-x-reverse">
                <a href="#" className="hover:text-primary transition-colors">LN</a>
                <a href="#" className="hover:text-primary transition-colors">X</a>

@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Stars, Trail } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 
-// The Interactive Gold Object
+// The Interactive Object
 const InteractiveObject = () => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
@@ -20,7 +20,6 @@ const InteractiveObject = () => {
       meshRef.current.rotation.y += dt * 0.25;
 
       // Mouse interaction (Parallax look)
-      // R3F state.mouse gives normalized coordinates (-1 to 1)
       const mouseX = state.mouse.x * 2;
       const mouseY = state.mouse.y * 2;
       
@@ -57,11 +56,11 @@ const InteractiveObject = () => {
         {/* Icosahedron Geometry (Techy looking shape) */}
         <icosahedronGeometry args={[2.5, 0]} />
         
-        {/* Luxury Gold Material */}
+        {/* Electric Purple Material */}
         <meshStandardMaterial
-          color="#D4AF37"
-          emissive="#D4AF37"
-          emissiveIntensity={hovered ? 0.5 : 0.1}
+          color="#6C63FF"
+          emissive="#6C63FF"
+          emissiveIntensity={hovered ? 0.8 : 0.2}
           wireframe={true}
           transparent
           opacity={0.8}
@@ -73,14 +72,10 @@ const InteractiveObject = () => {
   );
 };
 
-// Floating Gold Particles
+// Floating Particles (Cyan)
 const Particles = () => {
   const count = 100;
   const mesh = useRef<THREE.InstancedMesh>(null);
-  
-  // FIX: Track accumulated time manually instead of using absolute clock time.
-  // This ensures that when the tab is hidden, time effectively "pauses" and resumes
-  // from the exact same spot when visible again.
   const time = useRef(0);
   
   const dummy = new THREE.Object3D();
@@ -96,20 +91,17 @@ const Particles = () => {
 
   useFrame((state, delta) => {
     if (mesh.current) {
-        // Update custom time with clamped delta
         const dt = Math.min(delta, 0.1);
         time.current += dt;
         const t = time.current;
         
         particles.current.forEach((particle, i) => {
-            // Update Y position for floating effect
             dummy.position.set(
                 (particle.position[0] as number),
                 (particle.position[1] as number) + Math.sin(t * particle.factor) * 0.5,
                 (particle.position[2] as number)
             );
             
-            // Subtle rotation
             dummy.rotation.set(0, t * particle.speed, 0);
             
             const scale = 0.05 + Math.sin(t * particle.factor) * 0.02;
@@ -125,7 +117,7 @@ const Particles = () => {
   return (
     <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
       <dodecahedronGeometry args={[0.2, 0]} />
-      <meshBasicMaterial color="#F1D27A" wireframe />
+      <meshBasicMaterial color="#30C6FF" wireframe />
     </instancedMesh>
   );
 };
@@ -133,20 +125,16 @@ const Particles = () => {
 const Background3D = () => {
   return (
     <div className="fixed inset-0 z-0">
-        {/* 
-            We use eventSource to allow mouse tracking even if the canvas is covered by other elements.
-            However, for click interactions, the covering elements must be pointer-events-none.
-        */}
       <Canvas 
         className="w-full h-full"
         camera={{ position: [0, 0, 8], fov: 45 }}
         eventSource={document.getElementById('root') || undefined}
         eventPrefix="client"
       >
-        <fog attach="fog" args={['#000000', 5, 20]} />
+        <fog attach="fog" args={['#0A1A2F', 5, 20]} />
         <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1.5} color="#D4AF37" />
-        <spotLight position={[-10, -10, -10]} angle={0.15} penumbra={1} intensity={1} color="#F5EAD4" />
+        <pointLight position={[10, 10, 10]} intensity={1.5} color="#6C63FF" />
+        <spotLight position={[-10, -10, -10]} angle={0.15} penumbra={1} intensity={1} color="#30C6FF" />
         
         <InteractiveObject />
         <Particles />

@@ -1,8 +1,8 @@
 import { Translation } from './types';
 
 export const COMPANY_INFO = {
-  name: "GulfAutomate AI",
-  email: "hello@gulfautomate.ai",
+  name: "AIstylia",
+  email: "hello@aistylia.com",
   phone: "+971 4 123 4567",
   hq: "Dubai, UAE",
   markets: "UAE, KSA, Kuwait, Qatar"
@@ -250,7 +250,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
     aiChat: {
       trigger: "Ask AI Agent",
       placeholder: "Type your question here...",
-      welcome: "Hello! I'm the GulfAutomate assistant. Ask me about our services, pricing, or how we can help your business."
+      welcome: "Hello! I'm the AIstylia assistant. Ask me about our services, pricing, or how we can help your business."
     }
   },
   ar: {
@@ -494,7 +494,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
     aiChat: {
       trigger: "اسأل المساعد الذكي",
       placeholder: "اكتب سؤالك هنا...",
-      welcome: "مرحباً! أنا مساعد GulfAutomate. اسألني عن خدماتنا، الأسعار، أو كيف يمكننا مساعدة عملك."
+      welcome: "مرحباً! أنا مساعد AIstylia. اسألني عن خدماتنا، الأسعار، أو كيف يمكننا مساعدة عملك."
     }
   }
 };
