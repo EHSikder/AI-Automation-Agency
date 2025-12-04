@@ -4,7 +4,7 @@ import { LanguageProvider, useLanguage } from './components/LanguageContext';
 import AIChatWidget from './components/AIChatWidget';
 import Background3D from './components/Background3D';
 import { CONTENT } from './constants';
-import { ArrowRight, Check, Phone, MessageSquare, Workflow, Zap, MapPin, Mail, Sparkles, Box, LayoutGrid, Cpu, Clock, Trophy, BarChart3, Quote } from 'lucide-react';
+import { ArrowRight, Check, Phone, MessageSquare, Workflow, Zap, MapPin, Mail, Sparkles, Box, LayoutGrid, Cpu, Clock, Trophy, BarChart3, Quote, ShieldCheck, Rocket, BrainCircuit } from 'lucide-react';
 import { RechartsWrapper } from './components/Charts';
 
 // --- Shared Components ---
@@ -12,7 +12,7 @@ import { RechartsWrapper } from './components/Charts';
 const SectionHeader = ({ title, subtitle, align = 'center' }: { title: string, subtitle: string, align?: 'center' | 'left' }) => (
   <div className={`mb-20 ${align === 'center' ? 'text-center' : 'text-left'} pointer-events-auto`}>
     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">{title}</h2>
-    <p className="text-text-muted text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-80">{subtitle}</p>
+    <p className="text-white/80 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">{subtitle}</p>
   </div>
 );
 
@@ -31,28 +31,28 @@ const HeroSection = () => {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="flex flex-col items-center text-center">
           
-          {/* Badge */}
-          <div className="mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-background/20 backdrop-blur-md text-primary text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] hover:bg-primary/10 transition-colors shadow-[0_0_15px_rgba(108,99,255,0.1)] pointer-events-auto cursor-default">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#6C63FF]"></span>
+          {/* Badge - Try for free Highlight */}
+          <div className="mb-8 inline-flex items-center gap-2 px-6 py-2 rounded-full border border-accent/30 bg-accent/10 backdrop-blur-md text-accent text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] hover:bg-accent/20 transition-colors shadow-[0_0_25px_rgba(163,255,228,0.2)] pointer-events-auto cursor-pointer group">
+            <Sparkles className="w-3 h-3 group-hover:rotate-12 transition-transform" />
             {c.badge}
           </div>
 
           {/* Headline - pointer-events-auto allows text selection */}
-          <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold text-text-light mb-8 tracking-tighter leading-[0.9] max-w-4xl mx-auto drop-shadow-2xl pointer-events-auto">
+          <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold text-text-light mb-8 tracking-tighter leading-[0.9] max-w-5xl mx-auto drop-shadow-2xl pointer-events-auto">
              {c.headline}
           </h1>
           
-          <p className="text-lg md:text-2xl text-accent mb-12 max-w-2xl mx-auto leading-relaxed font-light tracking-wide opacity-90 pointer-events-auto">
+          <p className="text-lg md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-light tracking-wide pointer-events-auto">
             {c.subheadline}
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full sm:w-auto pointer-events-auto">
-            <a href="#contact" className="w-full sm:w-auto px-10 py-5 rounded-full bg-primary text-white font-bold tracking-wide hover:bg-secondary transition-all hover:scale-105 flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(108,99,255,0.4)]">
+            <a href="#contact" className="w-full sm:w-auto px-12 py-6 rounded-full bg-primary text-white font-bold tracking-wide hover:bg-secondary transition-all hover:scale-105 flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(108,99,255,0.4)]">
               {c.ctaPrimary}
               <ArrowRight className={`w-4 h-4 text-white transition-transform group-hover:translate-x-1 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
             </a>
-            <a href="#services" className="w-full sm:w-auto px-10 py-5 rounded-full font-bold text-white border border-border hover:border-primary/50 hover:bg-surface-highlight/50 transition-all flex items-center justify-center gap-2 backdrop-blur-sm tracking-wide bg-background/20">
+            <a href="#services" className="w-full sm:w-auto px-10 py-6 rounded-full font-bold text-white border border-border hover:border-primary/50 hover:bg-surface-highlight/50 transition-all flex items-center justify-center gap-2 backdrop-blur-sm tracking-wide bg-background/20">
               {c.ctaSecondary}
             </a>
           </div>
@@ -67,6 +67,38 @@ const HeroSection = () => {
     </section>
   );
 };
+
+const FeaturesStrip = () => {
+    return (
+        <div className="py-20 border-y border-border/30 bg-background/20 backdrop-blur-sm pointer-events-none relative z-10">
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <div className="pointer-events-auto p-6 rounded-2xl hover:bg-white/5 transition-colors">
+                        <div className="w-16 h-16 mx-auto bg-primary/20 rounded-2xl flex items-center justify-center mb-6 text-primary">
+                            <BrainCircuit className="w-8 h-8" />
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-3">Advanced Intelligence</h3>
+                        <p className="text-white/80 leading-relaxed">Built on Gemini 2.5 Flash and GPT-4o for nuanced, human-like understanding of complex Gulf dialects.</p>
+                    </div>
+                    <div className="pointer-events-auto p-6 rounded-2xl hover:bg-white/5 transition-colors">
+                         <div className="w-16 h-16 mx-auto bg-secondary/20 rounded-2xl flex items-center justify-center mb-6 text-secondary">
+                            <ShieldCheck className="w-8 h-8" />
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-3">Enterprise Security</h3>
+                        <p className="text-white/80 leading-relaxed">Bank-grade data encryption, GDPR compliant, and locally hosted data options for sensitive sectors.</p>
+                    </div>
+                    <div className="pointer-events-auto p-6 rounded-2xl hover:bg-white/5 transition-colors">
+                        <div className="w-16 h-16 mx-auto bg-accent/20 rounded-2xl flex items-center justify-center mb-6 text-accent">
+                            <Rocket className="w-8 h-8" />
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-3">Rapid Deployment</h3>
+                        <p className="text-white/80 leading-relaxed">Go live in days, not months. Our pre-built industry templates accelerate your automation journey.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
 
 const ServicesSection = () => {
   const { language } = useLanguage();
@@ -91,7 +123,7 @@ const ServicesSection = () => {
           {c.items.map((item, idx) => {
             const Icon = icons[item.iconName as keyof typeof icons] || Workflow;
             return (
-              <div key={item.id} className={`group relative p-10 rounded-[2rem] border border-border bg-surface/40 backdrop-blur-sm hover:bg-surface-highlight/60 transition-all duration-500 flex flex-col justify-between h-[400px] overflow-hidden pointer-events-auto ${idx === 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
+              <div key={item.id} className={`group relative p-10 rounded-[2rem] border border-border bg-surface/40 backdrop-blur-sm hover:bg-surface-highlight/60 transition-all duration-500 flex flex-col justify-between h-[450px] overflow-hidden pointer-events-auto ${idx === 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
                 {/* Hover Glow */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
@@ -100,13 +132,14 @@ const ServicesSection = () => {
                     <Icon className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{item.title}</h3>
-                  <p className="text-text-muted leading-relaxed font-light group-hover:text-accent transition-colors">{item.description}</p>
+                  {/* TEXT COLOR CHANGED TO WHITE AS REQUESTED */}
+                  <p className="text-white/90 leading-relaxed font-normal group-hover:text-white transition-colors text-base">{item.description}</p>
                 </div>
 
                 <div className="border-t border-border/50 pt-6 flex justify-between items-end">
                     <div className="flex flex-col gap-2">
                          {item.features.slice(0, 2).map((f, i) => (
-                             <span key={i} className="text-xs text-text-muted uppercase tracking-wider group-hover:text-primary transition-colors">• {f}</span>
+                             <span key={i} className="text-xs text-white/70 uppercase tracking-wider group-hover:text-primary transition-colors">• {f}</span>
                          ))}
                     </div>
                     <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
@@ -132,25 +165,26 @@ const IndustrySection = () => {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} />
         
-        {/* Text-Only Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Expanded Grid for more industries */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {c.items.map((item, idx) => (
-            <div key={item.id} className="group p-8 rounded-[1.5rem] border border-border bg-surface/40 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 flex flex-col justify-between h-[300px] pointer-events-auto">
+            <div key={item.id} className="group p-8 rounded-[1.5rem] border border-border bg-surface/40 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 flex flex-col justify-between min-h-[320px] pointer-events-auto">
                <div>
                   <div className="mb-6 flex justify-between items-center">
-                    <span className="text-xs font-mono text-text-muted group-hover:text-primary transition-colors">
-                        0{idx + 1}
+                    <span className="text-xs font-mono text-white/50 group-hover:text-primary transition-colors">
+                        {(idx + 1).toString().padStart(2, '0')}
                     </span>
-                    <Box className="w-4 h-4 text-text-muted group-hover:text-primary transition-colors" />
+                    <Box className="w-4 h-4 text-white/50 group-hover:text-primary transition-colors" />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition-colors">{item.title}</h3>
-                  <p className="text-sm text-text-muted font-light leading-relaxed group-hover:text-text-light">{item.description}</p>
+                  {/* TEXT COLOR CHANGED TO WHITE AS REQUESTED */}
+                  <p className="text-sm text-gray-200 font-normal leading-relaxed group-hover:text-white">{item.description}</p>
                </div>
                
                <div className="mt-6 pt-6 border-t border-border/50 group-hover:border-border/50">
                  <div className="flex flex-wrap gap-2">
                      {item.kpis.map((kpi, kIdx) => (
-                         <span key={kIdx} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-sm bg-surface-highlight/50 text-text-muted group-hover:text-white group-hover:bg-primary transition-colors">
+                         <span key={kIdx} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-sm bg-surface-highlight/50 text-white/80 group-hover:text-white group-hover:bg-primary transition-colors">
                              {kpi}
                          </span>
                      ))}
@@ -188,12 +222,12 @@ const HowItWorksSection = () => {
                             </div>
                             
                             <h3 className="text-2xl font-bold text-white mb-4 relative z-10">{step.title}</h3>
-                            <p className="text-text-muted font-light leading-relaxed mb-8 flex-grow relative z-10">{step.description}</p>
+                            <p className="text-white/80 font-normal leading-relaxed mb-8 flex-grow relative z-10">{step.description}</p>
                             
                             <div className="pt-6 border-t border-border/50 space-y-4 relative z-10">
                                 <div>
-                                    <span className="text-xs uppercase tracking-wider text-text-muted block mb-1">Deliverables</span>
-                                    <span className="text-sm text-text-light font-medium">{step.deliverables}</span>
+                                    <span className="text-xs uppercase tracking-wider text-white/50 block mb-1">Deliverables</span>
+                                    <span className="text-sm text-white font-medium">{step.deliverables}</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-xs text-primary font-bold uppercase tracking-wide cursor-pointer hover:underline opacity-80 hover:opacity-100 transition-opacity">
                                     {step.microCta}
@@ -226,19 +260,19 @@ const PortfolioSection = () => {
                                 <div>
                                     <div className="flex items-center gap-3 mb-4">
                                         <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest rounded-sm">{item.industry}</span>
-                                        <span className="text-text-muted text-sm">{item.client}</span>
+                                        <span className="text-white/60 text-sm">{item.client}</span>
                                     </div>
                                     <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">{item.title}</h3>
                                 </div>
 
                                 <div className="space-y-6">
                                     <div className="bg-surface/40 backdrop-blur-sm p-6 rounded-2xl border border-border">
-                                        <h4 className="text-sm text-text-muted uppercase tracking-wide mb-2">The Challenge</h4>
-                                        <p className="text-text-light font-light leading-relaxed">{item.problem}</p>
+                                        <h4 className="text-sm text-white/50 uppercase tracking-wide mb-2">The Challenge</h4>
+                                        <p className="text-white font-light leading-relaxed">{item.problem}</p>
                                     </div>
                                     <div className="bg-surface/40 backdrop-blur-sm p-6 rounded-2xl border border-border">
-                                        <h4 className="text-sm text-text-muted uppercase tracking-wide mb-2">The Solution</h4>
-                                        <p className="text-text-light font-light leading-relaxed">{item.solution}</p>
+                                        <h4 className="text-sm text-white/50 uppercase tracking-wide mb-2">The Solution</h4>
+                                        <p className="text-white font-light leading-relaxed">{item.solution}</p>
                                     </div>
                                 </div>
 
@@ -246,11 +280,11 @@ const PortfolioSection = () => {
                                     <Trophy className="w-8 h-8 text-primary" />
                                     <div>
                                         <div className="text-xl font-bold text-white">{item.outcome}</div>
-                                        <div className="text-xs text-text-muted uppercase">Key Result</div>
+                                        <div className="text-xs text-white/60 uppercase">Key Result</div>
                                     </div>
                                 </div>
 
-                                <blockquote className="relative pl-6 italic text-text-muted border-l-2 border-primary/50">
+                                <blockquote className="relative pl-6 italic text-white/80 border-l-2 border-primary/50">
                                     "{item.testimonial}"
                                 </blockquote>
                             </div>
@@ -298,18 +332,18 @@ const PricingSection = () => {
               )}
               
               <div className="mb-10">
-                <h3 className={`text-lg font-medium mb-4 ${plan.isPopular ? 'text-white' : 'text-text-muted'}`}>{plan.name}</h3>
+                <h3 className={`text-lg font-medium mb-4 ${plan.isPopular ? 'text-white' : 'text-white/80'}`}>{plan.name}</h3>
                 <div className="flex items-baseline gap-1">
                     <span className={`text-6xl font-bold tracking-tighter ${plan.isPopular ? 'text-primary' : 'text-white'}`}>{plan.price}</span>
                 </div>
-                <span className={`text-sm ${plan.isPopular ? 'text-text-muted' : 'text-text-muted'}`}>{plan.period}</span>
+                <span className={`text-sm ${plan.isPopular ? 'text-white/60' : 'text-white/60'}`}>{plan.period}</span>
               </div>
 
               <div className="flex-grow mb-10">
-                <p className={`text-sm mb-8 leading-relaxed font-light ${plan.isPopular ? 'text-text-light' : 'text-text-muted'}`}>{plan.description}</p>
+                <p className={`text-sm mb-8 leading-relaxed font-light ${plan.isPopular ? 'text-white' : 'text-white/80'}`}>{plan.description}</p>
                 <ul className="space-y-4">
                     {plan.features.map((feat, i) => (
-                    <li key={i} className={`flex items-center gap-3 text-sm ${plan.isPopular ? 'text-text-light' : 'text-text-muted'}`}>
+                    <li key={i} className={`flex items-center gap-3 text-sm ${plan.isPopular ? 'text-white' : 'text-white/80'}`}>
                         <Check className={`w-4 h-4 ${plan.isPopular ? 'text-primary' : 'text-secondary'}`} />
                         {feat}
                     </li>
@@ -347,7 +381,7 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-2 gap-24">
           <div className="pointer-events-auto">
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-none">{c.title}</h2>
-            <p className="text-xl text-text-muted mb-16 font-light max-w-md">{c.subtitle}</p>
+            <p className="text-xl text-white/80 mb-16 font-light max-w-md">{c.subtitle}</p>
             
             <div className="space-y-12">
               <div className="group flex items-start gap-6">
@@ -356,7 +390,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-white text-xl mb-2">{language === 'en' ? 'Headquarters' : 'المقر الرئيسي'}</h4>
-                  <p className="text-text-muted font-light leading-relaxed">Business Bay, Dubai, UAE<br/>Sharq, Kuwait City, Kuwait</p>
+                  <p className="text-white/80 font-light leading-relaxed">Business Bay, Dubai, UAE<br/>Sharq, Kuwait City, Kuwait</p>
                 </div>
               </div>
               <div className="group flex items-start gap-6">
@@ -365,7 +399,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-white text-xl mb-2">{language === 'en' ? 'Email Us' : 'راسلنا'}</h4>
-                  <p className="text-text-muted font-light text-lg">hello@aistylia.com</p>
+                  <p className="text-white/80 font-light text-lg">hello@riwa.ai</p>
                 </div>
               </div>
             </div>
@@ -376,20 +410,20 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="relative group">
                     <input type="text" placeholder=" " className="peer w-full bg-transparent border-b border-border py-4 text-white focus:outline-none focus:border-primary transition-colors" />
-                    <label className="absolute left-0 top-4 text-text-muted text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.nameLabel}</label>
+                    <label className="absolute left-0 top-4 text-white/60 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.nameLabel}</label>
                 </div>
                 <div className="relative group">
                     <input type="email" placeholder=" " className="peer w-full bg-transparent border-b border-border py-4 text-white focus:outline-none focus:border-primary transition-colors" />
-                    <label className="absolute left-0 top-4 text-text-muted text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.emailLabel}</label>
+                    <label className="absolute left-0 top-4 text-white/60 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.emailLabel}</label>
                 </div>
               </div>
               <div className="relative group">
                 <input type="tel" placeholder=" " className="peer w-full bg-transparent border-b border-border py-4 text-white focus:outline-none focus:border-primary transition-colors" />
-                <label className="absolute left-0 top-4 text-text-muted text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.phoneLabel}</label>
+                <label className="absolute left-0 top-4 text-white/60 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.phoneLabel}</label>
               </div>
               <div className="relative group">
                 <textarea rows={4} placeholder=" " className="peer w-full bg-transparent border-b border-border py-4 text-white focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
-                <label className="absolute left-0 top-4 text-text-muted text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.messageLabel}</label>
+                <label className="absolute left-0 top-4 text-white/60 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.messageLabel}</label>
               </div>
               <button type="submit" className="w-full bg-primary text-white font-bold py-5 rounded-full hover:bg-secondary transition-all hover:scale-[1.02] mt-8 text-lg tracking-wide shadow-[0_0_15px_rgba(108,99,255,0.4)]">
                 {c.submitBtn}
@@ -411,6 +445,7 @@ function App() {
       <Layout>
         <Background3D /> {/* Placed at top of layout stack, behind content via CSS z-index */}
         <HeroSection />
+        <FeaturesStrip /> {/* New added section for 'more text and stuff' */}
         <ServicesSection />
         <IndustrySection />
         <HowItWorksSection />

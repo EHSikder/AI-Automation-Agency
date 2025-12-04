@@ -30,7 +30,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold group-hover:scale-90 transition-transform duration-300 shadow-[0_0_15px_rgba(108,99,255,0.4)]">
                   <div className="w-2 h-2 bg-white rounded-full"></div>
                 </div>
-                <span className="font-bold text-lg tracking-tight text-white group-hover:text-primary transition-colors">AIstylia</span>
+                <span className="font-bold text-lg tracking-tight text-white group-hover:text-primary transition-colors">Riwa AI</span>
               </div>
 
               {/* Desktop Menu */}
@@ -113,7 +113,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pointer-events-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-1">
-              <span className="text-xl font-bold text-white block mb-6 tracking-tight">AIstylia</span>
+              <span className="text-xl font-bold text-white block mb-6 tracking-tight">Riwa AI</span>
               <p className="text-sm leading-relaxed mb-6 opacity-60">
                 {language === 'en' 
                   ? "Architecting the future of Gulf enterprise through intelligent automation layers."
@@ -124,18 +124,18 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <div>
               <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">{language === 'en' ? 'Solutions' : 'الحلول'}</h4>
               <ul className="space-y-4 text-sm font-light">
-                <li><a href="#" className="hover:text-primary transition-colors">Voice Agents</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">WhatsApp API</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">CleanCloud Sync</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Voice Agents</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">WhatsApp API</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">CleanCloud Sync</a></li>
               </ul>
             </div>
 
             <div>
               <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">{language === 'en' ? 'Company' : 'الشركة'}</h4>
               <ul className="space-y-4 text-sm font-light">
-                <li><a href="#" className="hover:text-primary transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
               </ul>
             </div>
 
@@ -149,7 +149,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             </div>
           </div>
           <div className="border-t border-border mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-40">
-            <p>&copy; {new Date().getFullYear()} AIstylia.</p>
+            <p>&copy; {new Date().getFullYear()} Riwa AI.</p>
             <div className="flex space-x-6 mt-4 md:mt-0 rtl:space-x-reverse">
                <a href="#" className="hover:text-primary transition-colors">LN</a>
                <a href="#" className="hover:text-primary transition-colors">X</a>
