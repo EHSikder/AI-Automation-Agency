@@ -13,11 +13,19 @@ const Background3D = () => {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
 
   useEffect(() => {
-    // Poll for VANTA availability in case scripts load slowly
+    let effect: any = null;
+    let interval: any = null;
+
     const initVanta = () => {
-      if (!vantaEffect && window.VANTA && vantaRef.current) {
+      // Only initialize if Vanta isn't already active
+      if (!effect && vantaRef.current) {
+        // Critical: Check if THREE and VANTA are loaded globally
+        if (!window.THREE || !window.VANTA) {
+          return false; // Not ready yet
+        }
+
         try {
-          const effect = window.VANTA.GLOBE({
+          effect = window.VANTA.GLOBE({
             el: vantaRef.current,
             mouseControls: true,
             touchControls: true,
@@ -26,35 +34,44 @@ const Background3D = () => {
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
-            // Brand Colors
+            // Brand Colors - Updated to Teal
             backgroundColor: 0x0A1A2F, // Deep Navy
-            color: 0x6C63FF,           // Electric Purple (The Globe Lines)
-            color2: 0x30C6FF,          // Cyan (Accents)
+            color: 0x6C63FF,           // Electric Purple (Lines)
+            color2: 0x00C2B8,          // Teal (Accents)
             size: 1.2,
           });
           setVantaEffect(effect);
+          return true; // Success
         } catch (e) {
-          console.error("Failed to initialize Vanta:", e);
+          console.error("[Background3D] Failed to initialize Vanta:", e);
+          return false;
         }
       }
+      return true; // Already initialized
     };
 
-    // Try immediately
-    initVanta();
+    // Attempt to initialize immediately
+    const success = initVanta();
 
-    // Retry after a short delay to ensure scripts loaded
-    const timeoutId = setTimeout(initVanta, 500);
+    // If not ready, poll every 100ms until scripts load
+    if (!success) {
+      interval = setInterval(() => {
+        if (initVanta()) {
+          clearInterval(interval);
+        }
+      }, 100);
+    }
 
     return () => {
-      clearTimeout(timeoutId);
-      if (vantaEffect) vantaEffect.destroy();
+      if (interval) clearInterval(interval);
+      if (effect) effect.destroy();
     };
-  }, [vantaEffect]);
+  }, []);
 
   return (
     <div 
       ref={vantaRef} 
-      className="fixed inset-0 z-0 pointer-events-none"
+      className="fixed inset-0 z-0 pointer-events-none opacity-60"
       style={{ width: '100%', height: '100vh' }}
     />
   );

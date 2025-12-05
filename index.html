@@ -3,17 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Riwa AI - Enterprise Automation</title>
-    <!-- Google Fonts -->
+    <title>Riwa AI - The Operating System for Gulf Business</title>
+    <meta name="description" content="Automate support, sales, and operations across WhatsApp, calls and your POS. Launch in days, not months.">
+    
+    <!-- Google Fonts: Inter for UI, IBM Plex Sans Arabic for localized feel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Vanta JS Dependencies (Must use Three.js r121 for Vanta) -->
+    <!-- Vanta JS Dependencies (Three.js r121 is required for Vanta) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
 
-    <!-- Tailwind CSS (CDN for simplicity) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -22,64 +24,55 @@
           extend: {
             colors: {
               background: '#0A1A2F', // Deep Navy
-              surface: '#2B2F36',    // Graphite
-              'surface-highlight': '#3A3F4A', // Slate Grey
-              primary: '#6C63FF',    // Electric Purple
-              secondary: '#30C6FF',  // Blue Cyan
-              accent: '#A3FFE4',     // Mint Glow
-              border: '#3A3F4A',     // Slate Grey
-              'text-muted': '#94A3B8', // Slate Grey Light / Muted
-              'text-light': '#FFFFFF', // White
+              surface: '#112240',    // Slightly lighter navy for cards
+              primary: '#6C63FF',    // Electric Purple (Brand)
+              cta: '#00C2B8',        // High Contrast Teal (Buttons)
+              'cta-hover': '#00A89F',
+              secondary: '#30C6FF',  // Blue Cyan (Accents)
+              border: '#233554',     // Muted Blue Grey
+              text: {
+                main: '#E2E8F0',     // Light Gray for body
+                light: '#FFFFFF',    // White for headings
+                muted: '#94A3B8'     // Muted text
+              }
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
               arabic: ['IBM Plex Sans Arabic', 'sans-serif'],
             },
-            backgroundImage: {
-              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-              'brand-gradient': "linear-gradient(135deg, #6C63FF 0%, #30C6FF 100%)",
-            },
             animation: {
               'spin-slow': 'spin 20s linear infinite',
               'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'spotlight': 'spotlight 2s ease .75s 1 forwards',
-            },
-            keyframes: {
-              spotlight: {
-                '0%': { opacity: 0, transform: 'translate(-72%, -62%) scale(0.5)' },
-                '100%': { opacity: 1, transform: 'translate(-50%,-40%) scale(1)' },
-              },
-            },
+            }
           }
         }
       }
     </script>
     <style>
       html { scroll-behavior: smooth; }
-      .no-scrollbar::-webkit-scrollbar { display: none; }
-      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      
-      body {
-        background-color: #0A1A2F;
-        color: #FFFFFF;
-      }
+      body { background-color: #0A1A2F; color: #E2E8F0; }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0A1A2F; }
+      ::-webkit-scrollbar-thumb { background: #233554; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #6C63FF; }
     </style>
 <script type="importmap">
 {
   "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
     "react/": "https://aistudiocdn.com/react@^19.2.1/",
     "react": "https://aistudiocdn.com/react@^19.2.1",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
-    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
-    "vite": "https://aistudiocdn.com/vite@^7.2.6"
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "vite": "https://aistudiocdn.com/vite@^7.2.6",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
   }
 }
 </script>
 </head>
-  <body class="antialiased selection:bg-primary selection:text-white">
+  <body class="antialiased selection:bg-cta selection:text-white">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

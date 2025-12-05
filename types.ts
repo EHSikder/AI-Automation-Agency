@@ -18,8 +18,11 @@ export interface Service {
 export interface Industry {
   id: string;
   title: string;
-  kpis: string[];
+  kpis?: string[];
   description: string;
+  problem: string;
+  solution: string;
+  kpi: string;
 }
 
 export interface WorkStep {
@@ -38,6 +41,7 @@ export interface PricingPlan {
   description: string;
   features: string[];
   cta: string;
+  roi?: string;
   isPopular?: boolean;
 }
 
@@ -46,12 +50,20 @@ export interface PortfolioItem {
   client: string;
   industry: string;
   title: string;
-  background: string;
-  problem: string;
-  solution: string;
-  outcome: string;
-  testimonial: string;
-  image: string;
+  background?: string;
+  problem?: string;
+  solution?: string;
+  outcome?: string;
+  testimonial?: string;
+  image?: string;
+  stats: { label: string; value: string }[];
+  content: string;
+  quote: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
 }
 
 export interface Translation {
@@ -63,6 +75,11 @@ export interface Translation {
     ctaPrimary: string;
     ctaSecondary: string;
     trustText: string;
+    trustTitle: string;
+  };
+  featuresStrip: {
+    title: string;
+    items: { icon: string; title: string; desc: string }[];
   };
   services: {
     sectionTitle: string;
@@ -90,6 +107,11 @@ export interface Translation {
     cta: string;
     items: PortfolioItem[];
   };
+  faq: {
+    sectionTitle: string;
+    sectionSubtitle: string;
+    items: FaqItem[];
+  };
   contact: {
     title: string;
     subtitle: string;
@@ -98,6 +120,12 @@ export interface Translation {
     phoneLabel: string;
     messageLabel: string;
     submitBtn: string;
+    form: {
+      name: string;
+      email: string;
+      phone: string;
+      submit: string;
+    }
   };
   aiChat: {
     trigger: string;

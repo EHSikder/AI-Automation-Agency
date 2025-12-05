@@ -19,27 +19,27 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col relative overflow-x-hidden bg-transparent text-text-light font-sans selection:bg-primary selection:text-white">
-      {/* Navigation - pointer-events-none on wrapper to pass clicks to background */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 pointer-events-none ${scrolled ? 'py-4' : 'py-6'}`}>
+    <div className="min-h-screen flex flex-col relative overflow-x-hidden bg-background text-text-main font-sans selection:bg-cta selection:text-white">
+      {/* Navigation */}
+      <nav className={`fixed w-full z-50 transition-all duration-300 pointer-events-none ${scrolled ? 'py-2' : 'py-6'}`}>
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`rounded-full border border-border/50 backdrop-blur-md bg-background/60 px-6 transition-all duration-500 pointer-events-auto ${scrolled ? 'bg-background/90 border-primary/20 shadow-[0_0_20px_-10px_rgba(108,99,255,0.2)]' : ''}`}>
-            <div className="flex justify-between items-center h-14">
+          <div className={`rounded-full border border-border/40 backdrop-blur-xl bg-background/80 px-6 transition-all duration-300 pointer-events-auto ${scrolled ? 'shadow-lg py-2' : 'py-3'}`}>
+            <div className="flex justify-between items-center h-10 md:h-12">
               {/* Logo */}
-              <div className="flex-shrink-0 flex items-center cursor-pointer gap-2 group pointer-events-auto" onClick={() => window.scrollTo(0,0)}>
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold group-hover:scale-90 transition-transform duration-300 shadow-[0_0_15px_rgba(108,99,255,0.4)]">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
+              <div className="flex-shrink-0 flex items-center cursor-pointer gap-2 group" onClick={() => window.scrollTo(0,0)}>
+                <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-white font-bold shadow-lg">
+                  <div className="w-3 h-3 bg-white rounded-sm"></div>
                 </div>
-                <span className="font-bold text-lg tracking-tight text-white group-hover:text-primary transition-colors">Riwa AI</span>
+                <span className="font-bold text-xl tracking-tight text-white">Riwa AI</span>
               </div>
 
               {/* Desktop Menu */}
-              <div className="hidden md:flex items-center space-x-1 rtl:space-x-reverse pointer-events-auto">
+              <div className="hidden md:flex items-center space-x-1 rtl:space-x-reverse">
                 {content.nav.map((item) => (
                   <a 
                     key={item.id} 
                     href={item.href} 
-                    className="px-5 py-2 text-sm text-text-muted hover:text-white font-medium transition-colors hover:bg-surface-highlight/50 rounded-full"
+                    className="px-4 py-2 text-sm text-text-muted hover:text-white font-medium transition-colors hover:bg-white/5 rounded-full"
                   >
                     {item.label}
                   </a>
@@ -47,7 +47,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               </div>
 
               {/* Actions */}
-              <div className="hidden md:flex items-center gap-4 pointer-events-auto">
+              <div className="hidden md:flex items-center gap-4">
                 <button 
                   onClick={toggleLanguage}
                   className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-border text-xs text-text-muted hover:text-white hover:border-primary/50 transition-all"
@@ -57,14 +57,14 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 </button>
                 <a 
                   href="#contact" 
-                  className="bg-primary text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-secondary transition-all flex items-center gap-2 tracking-wide uppercase shadow-[0_0_20px_rgba(108,99,255,0.3)] hover:shadow-[0_0_25px_rgba(48,198,255,0.5)]"
+                  className="bg-cta text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-cta-hover transition-all shadow-[0_0_20px_rgba(0,194,184,0.3)] hover:shadow-[0_0_25px_rgba(0,194,184,0.5)] transform hover:translate-y-[-1px]"
                 >
                   {content.hero.ctaPrimary}
                 </a>
               </div>
 
               {/* Mobile Button */}
-              <div className="md:hidden flex items-center gap-4 pointer-events-auto">
+              <div className="md:hidden flex items-center gap-4">
                 <button onClick={toggleLanguage} className="text-white text-sm hover:text-primary">
                     <span className="font-bold">{language === 'en' ? 'ع' : 'En'}</span>
                 </button>
@@ -93,7 +93,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               <a 
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="bg-primary text-white text-center py-3 rounded-full font-bold mt-4"
+                className="bg-cta text-white text-center py-3 rounded-full font-bold mt-4"
               >
                 {content.hero.ctaPrimary}
               </a>
@@ -102,59 +102,58 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         )}
       </nav>
 
-      {/* Main Content */}
-      <main className="flex-grow pointer-events-none">
-        {/* Children components need to explicitly enable pointer-events-auto for interactive elements */}
+      <main className="flex-grow">
         {children}
       </main>
 
       {/* Footer */}
-      <footer className="bg-background/80 backdrop-blur-md text-text-muted py-20 border-t border-border pointer-events-none">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pointer-events-auto">
+      <footer className="bg-surface/50 backdrop-blur-lg text-text-muted py-16 border-t border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-1">
-              <span className="text-xl font-bold text-white block mb-6 tracking-tight">Riwa AI</span>
-              <p className="text-sm leading-relaxed mb-6 opacity-60">
+              <span className="text-xl font-bold text-white block mb-4 tracking-tight">Riwa AI</span>
+              <p className="text-sm leading-relaxed mb-6 opacity-80">
                 {language === 'en' 
                   ? "Architecting the future of Gulf enterprise through intelligent automation layers."
                   : "هندسة مستقبل المؤسسات الخليجية من خلال طبقات الأتمتة الذكية."}
               </p>
+              <div className="flex space-x-4 rtl:space-x-reverse opacity-60">
+                 {/* Social Placeholders */}
+                 <div className="w-8 h-8 bg-white/10 rounded-full"></div>
+                 <div className="w-8 h-8 bg-white/10 rounded-full"></div>
+                 <div className="w-8 h-8 bg-white/10 rounded-full"></div>
+              </div>
             </div>
             
             <div>
-              <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">{language === 'en' ? 'Solutions' : 'الحلول'}</h4>
-              <ul className="space-y-4 text-sm font-light">
-                <li><a href="#" className="hover:text-white transition-colors">Voice Agents</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">WhatsApp API</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">CleanCloud Sync</a></li>
+              <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">{language === 'en' ? 'Legal' : 'قانوني'}</h4>
+              <ul className="space-y-3 text-sm font-light">
+                <li><a href="#" className="hover:text-cta transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-cta transition-colors">Terms of Service</a></li>
+                <li><a href="#" className="hover:text-cta transition-colors">Data Processing (DPA)</a></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">{language === 'en' ? 'Company' : 'الشركة'}</h4>
-              <ul className="space-y-4 text-sm font-light">
-                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
+              <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">{language === 'en' ? 'Company' : 'الشركة'}</h4>
+              <ul className="space-y-3 text-sm font-light">
+                <li><a href="#" className="hover:text-cta transition-colors">About Us</a></li>
+                <li><a href="#" className="hover:text-cta transition-colors">Careers</a></li>
+                <li><a href="#" className="hover:text-cta transition-colors">Contact</a></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">{language === 'en' ? 'Connect' : 'تواصل'}</h4>
-              <ul className="space-y-4 text-sm font-light">
-                <li>{COMPANY_INFO.email}</li>
-                <li style={{direction: 'ltr'}} className={isRTL ? 'text-right' : ''}>{COMPANY_INFO.phone}</li>
-                <li>{COMPANY_INFO.hq}</li>
+              <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">{language === 'en' ? 'Connect' : 'تواصل'}</h4>
+              <ul className="space-y-3 text-sm font-light">
+                <li className="flex items-center gap-2"><div className="w-2 h-2 bg-cta rounded-full"></div> {COMPANY_INFO.email}</li>
+                <li style={{direction: 'ltr'}} className={`flex items-center gap-2 ${isRTL ? 'justify-end' : ''}`}><div className="w-2 h-2 bg-cta rounded-full"></div> {COMPANY_INFO.phone}</li>
+                <li className="flex items-center gap-2"><div className="w-2 h-2 bg-cta rounded-full"></div> {COMPANY_INFO.hq}</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-border mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-40">
-            <p>&copy; {new Date().getFullYear()} Riwa AI.</p>
-            <div className="flex space-x-6 mt-4 md:mt-0 rtl:space-x-reverse">
-               <a href="#" className="hover:text-primary transition-colors">LN</a>
-               <a href="#" className="hover:text-primary transition-colors">X</a>
-               <a href="#" className="hover:text-primary transition-colors">IG</a>
-            </div>
+          <div className="border-t border-border mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-50">
+            <p>&copy; {new Date().getFullYear()} Riwa AI. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout } from './components/Layout';
 import { LanguageProvider, useLanguage } from './components/LanguageContext';
 import AIChatWidget from './components/AIChatWidget';
 import Background3D from './components/Background3D';
 import { CONTENT } from './constants';
-import { ArrowRight, Check, Phone, MessageSquare, Workflow, Zap, MapPin, Mail, Sparkles, Box, LayoutGrid, Cpu, Clock, Trophy, BarChart3, Quote, ShieldCheck, Rocket, BrainCircuit } from 'lucide-react';
-import { RechartsWrapper } from './components/Charts';
+import { ArrowRight, Check, Phone, MessageSquare, Workflow, Zap, MapPin, Mail, Sparkles, Box, LayoutGrid, Cpu, Clock, Trophy, BarChart3, Quote, ShieldCheck, Rocket, BrainCircuit, Users, Plus, Minus } from 'lucide-react';
 
-// --- Shared Components ---
+// --- Components ---
 
 const SectionHeader = ({ title, subtitle, align = 'center' }: { title: string, subtitle: string, align?: 'center' | 'left' }) => (
-  <div className={`mb-20 ${align === 'center' ? 'text-center' : 'text-left'} pointer-events-auto`}>
-    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">{title}</h2>
-    <p className="text-white/80 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">{subtitle}</p>
+  <div className={`mb-16 ${align === 'center' ? 'text-center' : 'text-left'}`}>
+    <h2 className="text-3xl md:text-5xl font-bold text-text-light mb-6 tracking-tight leading-tight">{title}</h2>
+    <p className="text-text-main text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-90">{subtitle}</p>
   </div>
+);
+
+const TrustStrip = ({ title }: { title: string }) => (
+    <div className="py-12 border-y border-border/30 bg-surface/60 backdrop-blur-md">
+        <div className="max-w-[1400px] mx-auto px-6 text-center">
+            <p className="text-xs font-bold tracking-[0.2em] text-text-muted mb-8 uppercase">{title}</p>
+            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                {/* Logo Placeholders - In production replace with SVGs */}
+                <span className="text-xl font-bold font-sans tracking-tight text-white">STC</span>
+                <span className="text-xl font-bold font-sans tracking-tight text-white">ARAMCO</span>
+                <span className="text-xl font-bold font-sans tracking-tight text-white">NOON</span>
+                <span className="text-xl font-bold font-sans tracking-tight text-white">TALABAT</span>
+                <span className="text-xl font-bold font-sans tracking-tight text-white">EMAAR</span>
+            </div>
+        </div>
+    </div>
 );
 
 // --- Sections ---
@@ -24,44 +39,40 @@ const HeroSection = () => {
   const isRTL = language === 'ar';
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden pointer-events-none">
-      {/* Spotlight Effect - Electric Purple */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary opacity-[0.1] blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
-
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+    <section className="relative min-h-[90vh] flex flex-col justify-center pt-20 overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full mt-10">
         <div className="flex flex-col items-center text-center">
           
-          {/* Badge - Try for free Highlight */}
-          <div className="mb-8 inline-flex items-center gap-2 px-6 py-2 rounded-full border border-accent/30 bg-accent/10 backdrop-blur-md text-accent text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] hover:bg-accent/20 transition-colors shadow-[0_0_25px_rgba(163,255,228,0.2)] pointer-events-auto cursor-pointer group">
-            <Sparkles className="w-3 h-3 group-hover:rotate-12 transition-transform" />
+          {/* Badge */}
+          <div className="mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cta/30 bg-cta/10 text-cta text-[11px] md:text-xs font-bold uppercase tracking-widest cursor-pointer hover:bg-cta/20 transition-colors">
+            <Sparkles className="w-3 h-3" />
             {c.badge}
           </div>
 
-          {/* Headline - pointer-events-auto allows text selection */}
-          <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold text-text-light mb-8 tracking-tighter leading-[0.9] max-w-5xl mx-auto drop-shadow-2xl pointer-events-auto">
+          {/* Headline */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight leading-[1.1] max-w-5xl mx-auto drop-shadow-xl">
              {c.headline}
           </h1>
           
-          <p className="text-lg md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-light tracking-wide pointer-events-auto">
+          <p className="text-lg md:text-2xl text-text-main mb-12 max-w-3xl mx-auto leading-relaxed font-light">
             {c.subheadline}
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full sm:w-auto pointer-events-auto">
-            <a href="#contact" className="w-full sm:w-auto px-12 py-6 rounded-full bg-primary text-white font-bold tracking-wide hover:bg-secondary transition-all hover:scale-105 flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(108,99,255,0.4)]">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
+            <a href="#contact" className="w-full sm:w-auto px-10 py-5 rounded-full bg-cta text-white font-bold tracking-wide hover:bg-cta-hover transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-cta/25">
               {c.ctaPrimary}
-              <ArrowRight className={`w-4 h-4 text-white transition-transform group-hover:translate-x-1 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
+              <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${isRTL ? 'rotate-180' : ''}`} />
             </a>
-            <a href="#services" className="w-full sm:w-auto px-10 py-6 rounded-full font-bold text-white border border-border hover:border-primary/50 hover:bg-surface-highlight/50 transition-all flex items-center justify-center gap-2 backdrop-blur-sm tracking-wide bg-background/20">
+            <a href="#contact" className="w-full sm:w-auto px-10 py-5 rounded-full font-bold text-white border border-white/20 hover:bg-white/10 transition-all flex items-center justify-center gap-2 backdrop-blur-sm">
               {c.ctaSecondary}
             </a>
           </div>
 
-          {/* Tech Scroll Indicator */}
-          <div className="mt-24 flex flex-col items-center gap-4 opacity-30 pointer-events-auto">
-             <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-primary to-transparent"></div>
-             <span className="text-[10px] uppercase tracking-widest text-primary">Scroll</span>
-          </div>
+          {/* Microcopy */}
+          <p className="mt-6 text-xs text-text-muted opacity-60">
+             Launch in 7-21 days • GDPR Compliant • No Credit Card
+          </p>
         </div>
       </div>
     </section>
@@ -69,31 +80,27 @@ const HeroSection = () => {
 };
 
 const FeaturesStrip = () => {
+    const { language } = useLanguage();
+    const c = CONTENT[language].featuresStrip;
+    const icons = { BrainCircuit, Zap, ShieldCheck };
+
     return (
-        <div className="py-20 border-y border-border/30 bg-background/20 backdrop-blur-sm pointer-events-none relative z-10">
-            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                    <div className="pointer-events-auto p-6 rounded-2xl hover:bg-white/5 transition-colors">
-                        <div className="w-16 h-16 mx-auto bg-primary/20 rounded-2xl flex items-center justify-center mb-6 text-primary">
-                            <BrainCircuit className="w-8 h-8" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-3">Advanced Intelligence</h3>
-                        <p className="text-white/80 leading-relaxed">Built on Gemini 2.5 Flash and GPT-4o for nuanced, human-like understanding of complex Gulf dialects.</p>
-                    </div>
-                    <div className="pointer-events-auto p-6 rounded-2xl hover:bg-white/5 transition-colors">
-                         <div className="w-16 h-16 mx-auto bg-secondary/20 rounded-2xl flex items-center justify-center mb-6 text-secondary">
-                            <ShieldCheck className="w-8 h-8" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-3">Enterprise Security</h3>
-                        <p className="text-white/80 leading-relaxed">Bank-grade data encryption, GDPR compliant, and locally hosted data options for sensitive sectors.</p>
-                    </div>
-                    <div className="pointer-events-auto p-6 rounded-2xl hover:bg-white/5 transition-colors">
-                        <div className="w-16 h-16 mx-auto bg-accent/20 rounded-2xl flex items-center justify-center mb-6 text-accent">
-                            <Rocket className="w-8 h-8" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-3">Rapid Deployment</h3>
-                        <p className="text-white/80 leading-relaxed">Go live in days, not months. Our pre-built industry templates accelerate your automation journey.</p>
-                    </div>
+        <div className="py-24 bg-surface/40 backdrop-blur-md border-t border-border/50">
+            <div className="max-w-[1400px] mx-auto px-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    {c.items.map((item, idx) => {
+                        // @ts-ignore
+                        const Icon = icons[item.icon as keyof typeof icons] || Zap;
+                        return (
+                            <div key={idx} className="flex flex-col items-center text-center group">
+                                <div className="w-16 h-16 rounded-2xl bg-surface border border-border flex items-center justify-center mb-6 text-cta group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <Icon className="w-8 h-8" />
+                                </div>
+                                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                                <p className="text-text-muted leading-relaxed max-w-xs">{item.desc}</p>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </div>
@@ -104,47 +111,40 @@ const ServicesSection = () => {
   const { language } = useLanguage();
   const c = CONTENT[language].services;
   
-  const icons = {
-    Phone: Phone,
-    MessageSquare: MessageSquare,
-    Workflow: LayoutGrid
-  };
+  const icons = { Phone, MessageSquare, Workflow };
 
   return (
-    <section id="services" className="py-40 relative pointer-events-none">
-      {/* Reduced opacity to 30% to let 3D background show through */}
-      <div className="absolute inset-0 bg-background/30 backdrop-blur-md -z-10"></div>
-      
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-32 relative">
+      <div className="max-w-[1400px] mx-auto px-6">
         <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} align="left" />
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {c.items.map((item, idx) => {
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {c.items.map((item) => {
+            // @ts-ignore
             const Icon = icons[item.iconName as keyof typeof icons] || Workflow;
             return (
-              <div key={item.id} className={`group relative p-10 rounded-[2rem] border border-border bg-surface/40 backdrop-blur-sm hover:bg-surface-highlight/60 transition-all duration-500 flex flex-col justify-between h-[450px] overflow-hidden pointer-events-auto ${idx === 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
-                {/* Hover Glow */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-
+              <div key={item.id} className="group p-10 rounded-[2rem] bg-surface/80 backdrop-blur-md border border-border hover:border-cta/50 transition-all duration-300 flex flex-col justify-between min-h-[400px] relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <Icon className="w-32 h-32 text-white" />
+                </div>
+                
                 <div>
-                  <div className="w-14 h-14 bg-surface-highlight/50 rounded-2xl flex items-center justify-center mb-8 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 border border-border group-hover:border-transparent">
-                    <Icon className="w-6 h-6" />
+                  <div className="w-14 h-14 bg-cta/10 rounded-xl flex items-center justify-center mb-8 text-cta">
+                    <Icon className="w-7 h-7" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{item.title}</h3>
-                  {/* TEXT COLOR CHANGED TO WHITE AS REQUESTED */}
-                  <p className="text-white/90 leading-relaxed font-normal group-hover:text-white transition-colors text-base">{item.description}</p>
+                  <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+                  <p className="text-text-main leading-relaxed mb-8">{item.description}</p>
                 </div>
 
-                <div className="border-t border-border/50 pt-6 flex justify-between items-end">
-                    <div className="flex flex-col gap-2">
-                         {item.features.slice(0, 2).map((f, i) => (
-                             <span key={i} className="text-xs text-white/70 uppercase tracking-wider group-hover:text-primary transition-colors">• {f}</span>
+                <div className="border-t border-border/50 pt-6">
+                    <ul className="space-y-3 mb-6">
+                         {item.features.map((f, i) => (
+                             <li key={i} className="flex items-center gap-2 text-sm text-text-main">
+                                 <Check className="w-4 h-4 text-cta" /> {f}
+                             </li>
                          ))}
-                    </div>
-                    <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
-                        <ArrowRight className={`w-4 h-4 transform -rotate-45 group-hover:rotate-0 transition-transform duration-500 ${language === 'ar' ? 'rotate-[225deg] group-hover:rotate-180' : ''}`} />
-                    </div>
+                    </ul>
+                    <div className="text-sm font-bold text-cta">{item.priceStart}</div>
                 </div>
               </div>
             );
@@ -160,35 +160,32 @@ const IndustrySection = () => {
   const c = CONTENT[language].industries;
 
   return (
-    <section id="industries" className="py-40 relative border-t border-border/20 pointer-events-none">
-      <div className="absolute inset-0 bg-background/30 backdrop-blur-md -z-10"></div>
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="industries" className="py-32 bg-surface/40 backdrop-blur-sm border-y border-border/50">
+      <div className="max-w-[1400px] mx-auto px-6">
         <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} />
         
-        {/* Expanded Grid for more industries */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {c.items.map((item, idx) => (
-            <div key={item.id} className="group p-8 rounded-[1.5rem] border border-border bg-surface/40 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 flex flex-col justify-between min-h-[320px] pointer-events-auto">
-               <div>
-                  <div className="mb-6 flex justify-between items-center">
-                    <span className="text-xs font-mono text-white/50 group-hover:text-primary transition-colors">
-                        {(idx + 1).toString().padStart(2, '0')}
-                    </span>
-                    <Box className="w-4 h-4 text-white/50 group-hover:text-primary transition-colors" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition-colors">{item.title}</h3>
-                  {/* TEXT COLOR CHANGED TO WHITE AS REQUESTED */}
-                  <p className="text-sm text-gray-200 font-normal leading-relaxed group-hover:text-white">{item.description}</p>
+            <div key={item.id} className="group p-8 rounded-2xl bg-surface/90 backdrop-blur-md border border-border hover:border-cta/50 transition-all cursor-pointer hover:-translate-y-1 shadow-sm hover:shadow-xl">
+               <div className="flex justify-between items-start mb-6">
+                  <span className="text-xs font-mono text-cta bg-cta/10 px-2 py-1 rounded">
+                      {(idx + 1).toString().padStart(2, '0')}
+                  </span>
+                  <ArrowRight className="w-5 h-5 text-border group-hover:text-cta transition-colors" />
                </div>
                
-               <div className="mt-6 pt-6 border-t border-border/50 group-hover:border-border/50">
-                 <div className="flex flex-wrap gap-2">
-                     {item.kpis.map((kpi, kIdx) => (
-                         <span key={kIdx} className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-sm bg-surface-highlight/50 text-white/80 group-hover:text-white group-hover:bg-primary transition-colors">
-                             {kpi}
-                         </span>
-                     ))}
-                 </div>
+               <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+               <p className="text-sm text-text-main mb-6 leading-relaxed">{item.description}</p>
+               
+               <div className="space-y-3 bg-background/60 p-4 rounded-xl border border-border/50">
+                   <div className="text-xs text-red-300 font-medium opacity-90">{item.problem}</div>
+                   <div className="text-xs text-green-400 font-bold">{item.solution}</div>
+               </div>
+               
+               <div className="mt-6 pt-4 border-t border-border/50 flex items-center gap-2">
+                   <Trophy className="w-4 h-4 text-cta" />
+                   {/* Handle potentially undefined kpi/kpis */}
+                   <span className="text-xs font-bold text-white">{item.kpi || (item.kpis && item.kpis[0]) || ''}</span>
                </div>
             </div>
           ))}
@@ -198,163 +195,62 @@ const IndustrySection = () => {
   );
 };
 
-const HowItWorksSection = () => {
-    const { language } = useLanguage();
-    const c = CONTENT[language].howItWorks;
-    const isRTL = language === 'ar';
-
-    return (
-        <section id="how-it-works" className="py-40 relative border-t border-border/20 pointer-events-none">
-            <div className="absolute inset-0 bg-background/30 backdrop-blur-md -z-10"></div>
-            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} align="center" />
-                
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {c.steps.map((step, idx) => (
-                        <div key={idx} className="group p-8 rounded-[2rem] bg-surface/40 backdrop-blur-sm border border-border hover:border-primary/40 hover:bg-surface-highlight/60 transition-all duration-300 flex flex-col h-full relative overflow-hidden pointer-events-auto">
-                            {/* Number BG */}
-                            <span className="absolute -right-4 -top-4 text-9xl font-bold text-white/[0.02] select-none group-hover:text-primary/[0.05] transition-colors">{step.number}</span>
-                            
-                            <div className="flex justify-between items-start mb-6 relative z-10">
-                                <div className="px-3 py-1 rounded-full border border-border text-xs font-mono text-primary bg-primary/5">
-                                    {step.timeline}
-                                </div>
-                            </div>
-                            
-                            <h3 className="text-2xl font-bold text-white mb-4 relative z-10">{step.title}</h3>
-                            <p className="text-white/80 font-normal leading-relaxed mb-8 flex-grow relative z-10">{step.description}</p>
-                            
-                            <div className="pt-6 border-t border-border/50 space-y-4 relative z-10">
-                                <div>
-                                    <span className="text-xs uppercase tracking-wider text-white/50 block mb-1">Deliverables</span>
-                                    <span className="text-sm text-white font-medium">{step.deliverables}</span>
-                                </div>
-                                <div className="flex items-center gap-2 text-xs text-primary font-bold uppercase tracking-wide cursor-pointer hover:underline opacity-80 hover:opacity-100 transition-opacity">
-                                    {step.microCta}
-                                    <ArrowRight className={`w-3 h-3 ${isRTL ? 'rotate-180' : ''}`} />
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
-
-const PortfolioSection = () => {
-    const { language } = useLanguage();
-    const c = CONTENT[language].portfolio;
-
-    return (
-        <section id="portfolio" className="py-40 relative border-t border-border/20 pointer-events-none">
-            <div className="absolute inset-0 bg-background/30 backdrop-blur-md -z-10"></div>
-             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} align="left" />
-                
-                <div className="flex flex-col gap-20">
-                    {c.items.map((item, idx) => (
-                        <div key={item.id} className="grid lg:grid-cols-12 gap-12 items-start border-b border-border/30 pb-20 last:border-0 last:pb-0 pointer-events-auto">
-                            {/* Content Side */}
-                            <div className={`lg:col-span-5 flex flex-col gap-8 ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
-                                <div>
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest rounded-sm">{item.industry}</span>
-                                        <span className="text-white/60 text-sm">{item.client}</span>
-                                    </div>
-                                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">{item.title}</h3>
-                                </div>
-
-                                <div className="space-y-6">
-                                    <div className="bg-surface/40 backdrop-blur-sm p-6 rounded-2xl border border-border">
-                                        <h4 className="text-sm text-white/50 uppercase tracking-wide mb-2">The Challenge</h4>
-                                        <p className="text-white font-light leading-relaxed">{item.problem}</p>
-                                    </div>
-                                    <div className="bg-surface/40 backdrop-blur-sm p-6 rounded-2xl border border-border">
-                                        <h4 className="text-sm text-white/50 uppercase tracking-wide mb-2">The Solution</h4>
-                                        <p className="text-white font-light leading-relaxed">{item.solution}</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-center gap-4 py-4">
-                                    <Trophy className="w-8 h-8 text-primary" />
-                                    <div>
-                                        <div className="text-xl font-bold text-white">{item.outcome}</div>
-                                        <div className="text-xs text-white/60 uppercase">Key Result</div>
-                                    </div>
-                                </div>
-
-                                <blockquote className="relative pl-6 italic text-white/80 border-l-2 border-primary/50">
-                                    "{item.testimonial}"
-                                </blockquote>
-                            </div>
-
-                            {/* Image Side */}
-                            <div className={`lg:col-span-7 h-full min-h-[400px] relative rounded-[2rem] overflow-hidden border border-border group ${idx % 2 === 1 ? 'lg:order-1' : ''}`}>
-                                <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out scale-100 group-hover:scale-105 opacity-60 group-hover:opacity-100" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="mt-20 flex justify-center pointer-events-auto">
-                    <a href="#contact" className="px-12 py-6 bg-primary text-white font-bold rounded-full hover:bg-secondary transition-all hover:scale-105 uppercase tracking-wider text-sm border border-transparent shadow-[0_0_20px_rgba(108,99,255,0.2)]">
-                        {c.cta}
-                    </a>
-                </div>
-             </div>
-        </section>
-    );
-};
-
 const PricingSection = () => {
   const { language } = useLanguage();
   const c = CONTENT[language].pricing;
 
   return (
-    <section id="pricing" className="py-40 relative border-t border-border/20 pointer-events-none">
-      <div className="absolute inset-0 bg-background/30 backdrop-blur-md -z-10"></div>
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pricing" className="py-32">
+      <div className="max-w-[1400px] mx-auto px-6">
         <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} />
         
         <div className="grid lg:grid-cols-3 gap-8 items-start">
           {c.plans.map((plan, idx) => (
-            <div key={idx} className={`rounded-[2rem] p-10 relative flex flex-col transition-transform hover:-translate-y-2 duration-500 pointer-events-auto ${
+            <div key={idx} className={`rounded-[2rem] p-10 relative flex flex-col transition-transform hover:-translate-y-2 duration-300 ${
               plan.isPopular 
-                ? 'bg-surface/80 border border-primary shadow-[0_0_40px_-10px_rgba(108,99,255,0.2)] backdrop-blur-md' 
-                : 'bg-surface/40 border border-border text-white hover:border-border/80 backdrop-blur-md'
+                ? 'bg-surface border-2 border-cta shadow-2xl shadow-cta/10' 
+                : 'bg-surface/80 backdrop-blur-md border border-border'
             }`}>
               {plan.isPopular && (
-                <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-6 py-2 rounded-bl-2xl rounded-tr-[2rem] uppercase tracking-wider">
-                  Selected
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-cta text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                  Most Popular
                 </div>
               )}
               
-              <div className="mb-10">
-                <h3 className={`text-lg font-medium mb-4 ${plan.isPopular ? 'text-white' : 'text-white/80'}`}>{plan.name}</h3>
+              <div className="mb-8">
+                <h3 className="text-lg font-medium text-white mb-2">{plan.name}</h3>
                 <div className="flex items-baseline gap-1">
-                    <span className={`text-6xl font-bold tracking-tighter ${plan.isPopular ? 'text-primary' : 'text-white'}`}>{plan.price}</span>
+                    <span className="text-5xl font-bold text-white">{plan.price}</span>
+                    <span className="text-text-muted">{plan.period}</span>
                 </div>
-                <span className={`text-sm ${plan.isPopular ? 'text-white/60' : 'text-white/60'}`}>{plan.period}</span>
+                <p className="text-sm text-text-muted mt-4">{plan.description}</p>
               </div>
 
+              {plan.roi && (
+                  <div className="p-4 bg-background/50 rounded-xl mb-8 border border-border/50">
+                      <div className="text-xs text-text-muted uppercase mb-1">ROI Estimate</div>
+                      <div className="text-sm font-bold text-green-400 flex items-center gap-2">
+                          <BarChart3 className="w-4 h-4" />
+                          {plan.roi}
+                      </div>
+                  </div>
+              )}
+
               <div className="flex-grow mb-10">
-                <p className={`text-sm mb-8 leading-relaxed font-light ${plan.isPopular ? 'text-white' : 'text-white/80'}`}>{plan.description}</p>
                 <ul className="space-y-4">
                     {plan.features.map((feat, i) => (
-                    <li key={i} className={`flex items-center gap-3 text-sm ${plan.isPopular ? 'text-white' : 'text-white/80'}`}>
-                        <Check className={`w-4 h-4 ${plan.isPopular ? 'text-primary' : 'text-secondary'}`} />
+                    <li key={i} className="flex items-center gap-3 text-sm text-text-main">
+                        <Check className="w-4 h-4 text-cta flex-shrink-0" />
                         {feat}
                     </li>
                     ))}
                 </ul>
               </div>
 
-              <button className={`w-full py-5 rounded-full font-bold text-sm tracking-wide transition-all ${
+              <button className={`w-full py-4 rounded-full font-bold text-sm tracking-wide transition-all ${
                 plan.isPopular 
-                  ? 'bg-primary text-white hover:bg-secondary shadow-[0_0_15px_rgba(108,99,255,0.4)]' 
-                  : 'bg-white text-black hover:bg-gray-200'
+                  ? 'bg-cta text-white hover:bg-cta-hover shadow-lg' 
+                  : 'bg-white text-background hover:bg-gray-200'
               }`}>
                 {plan.cta}
               </button>
@@ -366,94 +262,153 @@ const PricingSection = () => {
   );
 };
 
-const ContactSection = () => {
+const PortfolioSection = () => {
+    const { language } = useLanguage();
+    const c = CONTENT[language].portfolio;
+
+    return (
+        <section id="portfolio" className="py-32 bg-surface/20">
+             <div className="max-w-[1400px] mx-auto px-6">
+                <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} align="left" />
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                    {c.items.map((item, idx) => (
+                        <div key={item.id} className="bg-surface/90 backdrop-blur-md border border-border p-10 rounded-[2rem] hover:border-cta/30 transition-all shadow-xl">
+                            <div className="flex justify-between items-start mb-8">
+                                <div>
+                                    <div className="text-cta text-xs font-bold uppercase tracking-wider mb-2">{item.industry}</div>
+                                    <h3 className="text-3xl font-bold text-white mb-2">{item.title}</h3>
+                                    <div className="text-text-muted text-sm">{item.client}</div>
+                                </div>
+                                <div className="w-14 h-14 bg-background rounded-full flex items-center justify-center text-cta shadow-inner">
+                                    <Quote className="w-6 h-6" />
+                                </div>
+                            </div>
+                            
+                            <div className="grid grid-cols-2 gap-4 mb-8">
+                                {item.stats.map((stat, sIdx) => (
+                                    <div key={sIdx} className="bg-background/60 p-5 rounded-2xl border border-border/50">
+                                        <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
+                                        <div className="text-xs text-text-muted uppercase tracking-wide">{stat.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+                            
+                            <p className="text-white text-lg font-light leading-relaxed mb-8">"{item.content}"</p>
+                            <p className="text-sm text-text-muted italic border-l-2 border-cta pl-4">{item.quote}</p>
+                        </div>
+                    ))}
+                </div>
+             </div>
+        </section>
+    );
+};
+
+const FaqSection = () => {
   const { language } = useLanguage();
-  const c = CONTENT[language].contact;
-  const isRTL = language === 'ar';
+  const c = CONTENT[language].faq;
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggleFaq = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
-    <section id="contact" className="py-40 border-t border-border relative pointer-events-none">
-       {/* Slightly darker for contact form, but still transparent */}
-      <div className="absolute inset-0 bg-background/60 backdrop-blur-md -z-10"></div>
-      <div className="absolute left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none"></div>
-
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-24">
-          <div className="pointer-events-auto">
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-none">{c.title}</h2>
-            <p className="text-xl text-white/80 mb-16 font-light max-w-md">{c.subtitle}</p>
-            
-            <div className="space-y-12">
-              <div className="group flex items-start gap-6">
-                <div className="w-14 h-14 rounded-2xl bg-surface/50 flex items-center justify-center border border-border group-hover:border-primary transition-colors group-hover:shadow-[0_0_15px_rgba(108,99,255,0.2)]">
-                    <MapPin className="w-6 h-6 text-white group-hover:text-primary transition-colors" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white text-xl mb-2">{language === 'en' ? 'Headquarters' : 'المقر الرئيسي'}</h4>
-                  <p className="text-white/80 font-light leading-relaxed">Business Bay, Dubai, UAE<br/>Sharq, Kuwait City, Kuwait</p>
-                </div>
-              </div>
-              <div className="group flex items-start gap-6">
-                <div className="w-14 h-14 rounded-2xl bg-surface/50 flex items-center justify-center border border-border group-hover:border-primary transition-colors group-hover:shadow-[0_0_15px_rgba(108,99,255,0.2)]">
-                    <Mail className="w-6 h-6 text-white group-hover:text-primary transition-colors" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white text-xl mb-2">{language === 'en' ? 'Email Us' : 'راسلنا'}</h4>
-                  <p className="text-white/80 font-light text-lg">hello@riwa.ai</p>
+    <section id="faq" className="py-32 bg-surface/30 backdrop-blur-sm border-t border-border/50">
+      <div className="max-w-[1000px] mx-auto px-6">
+        <SectionHeader title={c.sectionTitle} subtitle={c.sectionSubtitle} />
+        
+        <div className="space-y-4">
+          {c.items.map((item, idx) => (
+            <div key={idx} className="bg-surface/80 border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:border-cta/30">
+              <button 
+                onClick={() => toggleFaq(idx)}
+                className="w-full p-6 text-left flex justify-between items-center focus:outline-none"
+              >
+                <span className="text-lg font-medium text-white">{item.question}</span>
+                <span className={`p-2 rounded-full bg-background/50 text-cta transition-transform duration-300 ${openIndex === idx ? 'rotate-180' : ''}`}>
+                  {openIndex === idx ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                </span>
+              </button>
+              <div 
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                  openIndex === idx ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <div className="p-6 pt-0 text-text-main leading-relaxed border-t border-border/30 mt-2">
+                  {item.answer}
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="bg-surface/60 backdrop-blur-xl p-12 rounded-[3rem] border border-border shadow-2xl pointer-events-auto">
-            <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="relative group">
-                    <input type="text" placeholder=" " className="peer w-full bg-transparent border-b border-border py-4 text-white focus:outline-none focus:border-primary transition-colors" />
-                    <label className="absolute left-0 top-4 text-white/60 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.nameLabel}</label>
-                </div>
-                <div className="relative group">
-                    <input type="email" placeholder=" " className="peer w-full bg-transparent border-b border-border py-4 text-white focus:outline-none focus:border-primary transition-colors" />
-                    <label className="absolute left-0 top-4 text-white/60 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.emailLabel}</label>
-                </div>
-              </div>
-              <div className="relative group">
-                <input type="tel" placeholder=" " className="peer w-full bg-transparent border-b border-border py-4 text-white focus:outline-none focus:border-primary transition-colors" />
-                <label className="absolute left-0 top-4 text-white/60 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.phoneLabel}</label>
-              </div>
-              <div className="relative group">
-                <textarea rows={4} placeholder=" " className="peer w-full bg-transparent border-b border-border py-4 text-white focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
-                <label className="absolute left-0 top-4 text-white/60 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary pointer-events-none">{c.messageLabel}</label>
-              </div>
-              <button type="submit" className="w-full bg-primary text-white font-bold py-5 rounded-full hover:bg-secondary transition-all hover:scale-[1.02] mt-8 text-lg tracking-wide shadow-[0_0_15px_rgba(108,99,255,0.4)]">
-                {c.submitBtn}
-              </button>
-            </form>
-          </div>
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
+const ContactSection = () => {
+  const { language } = useLanguage();
+  const c = CONTENT[language].contact;
+
+  return (
+    <section id="contact" className="py-32 relative overflow-hidden">
+      <div className="max-w-[1000px] mx-auto px-6 relative z-10">
+        <div className="bg-surface/95 backdrop-blur-xl border border-border rounded-[3rem] p-8 md:p-16 shadow-2xl relative overflow-hidden">
+            {/* Decorative gradient */}
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-cta/10 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
+
+            <div className="text-center mb-12">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">{c.title}</h2>
+                <p className="text-xl text-text-muted">{c.subtitle}</p>
+            </div>
+
+            <form className="max-w-xl mx-auto space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid md:grid-cols-2 gap-6">
+                <input type="text" placeholder={c.form.name} className="w-full bg-background border border-border rounded-xl px-6 py-4 text-white focus:border-cta focus:outline-none transition-colors" />
+                <input type="email" placeholder={c.form.email} className="w-full bg-background border border-border rounded-xl px-6 py-4 text-white focus:border-cta focus:outline-none transition-colors" />
+              </div>
+              <input type="tel" placeholder={c.form.phone} className="w-full bg-background border border-border rounded-xl px-6 py-4 text-white focus:border-cta focus:outline-none transition-colors" />
+              <button className="w-full bg-cta text-white font-bold text-lg py-5 rounded-xl hover:bg-cta-hover transition-all shadow-lg hover:shadow-cta/25 transform hover:-translate-y-1">
+                {c.form.submit}
+              </button>
+              <p className="text-center text-xs text-text-muted">No credit card required. Cancel anytime.</p>
+            </form>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// --- Sub-Component for Main Content (Fixes Context Error) ---
+
+const MainContent = () => {
+  const { language } = useLanguage();
+  const c = CONTENT[language].hero;
+
+  return (
+    <Layout>
+      <Background3D />
+      <HeroSection />
+      <TrustStrip title={c.trustTitle} />
+      <FeaturesStrip />
+      <ServicesSection />
+      <IndustrySection />
+      <PortfolioSection />
+      <PricingSection />
+      <FaqSection />
+      <ContactSection />
+      <AIChatWidget />
+    </Layout>
+  );
+};
 
 // --- Main App ---
 
 function App() {
   return (
     <LanguageProvider>
-      <Layout>
-        <Background3D /> {/* Placed at top of layout stack, behind content via CSS z-index */}
-        <HeroSection />
-        <FeaturesStrip /> {/* New added section for 'more text and stuff' */}
-        <ServicesSection />
-        <IndustrySection />
-        <HowItWorksSection />
-        <PortfolioSection />
-        <PricingSection />
-        <ContactSection />
-        <AIChatWidget />
-      </Layout>
+      <MainContent />
     </LanguageProvider>
   );
 }
