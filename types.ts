@@ -12,7 +12,7 @@ export interface Service {
   title: string;
   description: string;
   features: string[];
-  priceStart: string;
+  priceStart?: string; // Made optional
 }
 
 export interface Industry {
@@ -36,8 +36,9 @@ export interface WorkStep {
 
 export interface PricingPlan {
   name: string;
-  price: string;
-  period: string;
+  tagline?: string; 
+  price?: string; // Made optional
+  period?: string; // Made optional
   description: string;
   features: string[];
   cta: string;
@@ -120,6 +121,7 @@ export interface Translation {
     phoneLabel: string;
     messageLabel: string;
     submitBtn: string;
+    disclaimer: string;
     form: {
       name: string;
       email: string;

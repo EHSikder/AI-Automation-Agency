@@ -71,7 +71,7 @@ const HeroSection = () => {
 
           {/* Microcopy */}
           <p className="mt-6 text-xs text-text-muted opacity-60">
-             Launch in 7-21 days • GDPR Compliant • No Credit Card
+             Launch in 7-21 days • GDPR Compliant • No Commitments
           </p>
         </div>
       </div>
@@ -219,16 +219,16 @@ const PricingSection = () => {
               
               <div className="mb-8">
                 <h3 className="text-lg font-medium text-white mb-2">{plan.name}</h3>
+                {/* Replaced specific price with Tagline */}
                 <div className="flex items-baseline gap-1">
-                    <span className="text-5xl font-bold text-white">{plan.price}</span>
-                    <span className="text-text-muted">{plan.period}</span>
+                    <span className="text-2xl font-bold text-white">{plan.tagline}</span>
                 </div>
                 <p className="text-sm text-text-muted mt-4">{plan.description}</p>
               </div>
 
               {plan.roi && (
                   <div className="p-4 bg-background/50 rounded-xl mb-8 border border-border/50">
-                      <div className="text-xs text-text-muted uppercase mb-1">ROI Estimate</div>
+                      <div className="text-xs text-text-muted uppercase mb-1">Impact</div>
                       <div className="text-sm font-bold text-green-400 flex items-center gap-2">
                           <BarChart3 className="w-4 h-4" />
                           {plan.roi}
@@ -372,7 +372,7 @@ const ContactSection = () => {
               <button className="w-full bg-cta text-white font-bold text-lg py-5 rounded-xl hover:bg-cta-hover transition-all shadow-lg hover:shadow-cta/25 transform hover:-translate-y-1">
                 {c.form.submit}
               </button>
-              <p className="text-center text-xs text-text-muted">No credit card required. Cancel anytime.</p>
+              <p className="text-center text-xs text-text-muted">{c.disclaimer}</p>
             </form>
         </div>
       </div>

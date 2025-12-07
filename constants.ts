@@ -14,15 +14,15 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       { id: 'services', label: 'Capabilities', href: '#services' },
       { id: 'industries', label: 'Industries', href: '#industries' },
       { id: 'portfolio', label: 'Case Studies', href: '#portfolio' },
-      { id: 'pricing', label: 'Pricing', href: '#pricing' },
+      { id: 'pricing', label: 'Engagement', href: '#pricing' }, // Renamed from Pricing
       { id: 'faq', label: 'FAQ', href: '#faq' },
       { id: 'contact', label: 'Book Demo', href: '#contact' },
     ],
     hero: {
-      badge: "7-DAY FREE TRIAL • NO CREDIT CARD REQUIRED",
+      badge: "7-DAY FREE PILOT • LIMITED AVAILABILITY",
       headline: "The Operating System for Gulf Business",
       subheadline: "Automate support, sales, and operations across WhatsApp, calls, and your POS. Native Gulf dialect support. Launch in days, not months.",
-      ctaPrimary: "Start 7-Day Free Trial",
+      ctaPrimary: "Start 7-Day Free Pilot",
       ctaSecondary: "Book Strategy Call",
       trustText: "Trusted by leading enterprises",
       trustTitle: "TRUSTED BY FORWARD-THINKING BRANDS IN THE GCC"
@@ -45,7 +45,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           title: "Bilingual Voice Agents",
           description: "Handle reservations, support tickets, and sales qualification calls in fluent Arabic & English.",
           features: ["Zero hold times", "CRM instant sync", "Local number"],
-          priceStart: "From $500/mo"
+          priceStart: "View Pilot Options"
         },
         {
           id: 'whatsapp',
@@ -53,7 +53,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           title: "WhatsApp Revenue Engine",
           description: "Automate cart recovery, catalog sales, and customer support on the Gulf's #1 app.",
           features: ["Official Meta API", "Broadcast marketing", "Auto-checkout"],
-          priceStart: "From $300/mo"
+          priceStart: "View Pilot Options"
         },
         {
           id: 'ops',
@@ -61,7 +61,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           title: "Full-Stack Integrations",
           description: "Connect your AI to your actual business logic: POS, Inventory, and Dispatch systems.",
           features: ["CleanCloud / Foodics", "Salesforce / Hubspot", "Zapier / Make"],
-          priceStart: "Custom"
+          priceStart: "Custom Integration"
         }
       ]
     },
@@ -135,36 +135,33 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       ]
     },
     pricing: {
-      sectionTitle: "ROI-Focused Pricing",
-      sectionSubtitle: "Plans that pay for themselves in saved labor costs.",
+      sectionTitle: "Engagement Models",
+      sectionSubtitle: "Scalable solutions tailored to your business stage. Start with a free pilot.",
       plans: [
         {
-          name: "Starter",
-          price: "$999",
-          period: "/mo",
-          description: "For local businesses automating one channel.",
-          features: ["1 AI Voice Agent", "Basic WhatsApp Bot", "Monthly Reporting"],
-          roi: "Est. Savings: $2,500/mo in labor",
-          cta: "Start Free Trial"
+          name: "Starter Pilot",
+          tagline: "For Local Businesses",
+          description: "Perfect for single-location businesses starting with automation.",
+          features: ["1 AI Voice Agent", "Basic WhatsApp Bot", "Monthly Reporting", "Standard Support"],
+          roi: "Est. ROI: 3x first month",
+          cta: "Apply for Pilot"
         },
         {
           name: "Growth",
-          price: "$2,499",
-          period: "/mo",
-          description: "For scaling companies needing POS integration.",
-          features: ["3 AI Agents", "POS/CRM Integration", "Priority Support"],
-          roi: "Est. Savings: $8,000/mo in labor",
-          cta: "Start Free Trial",
+          tagline: "For Scaling Teams",
+          description: "Robust integration for multi-branch operations.",
+          features: ["3 AI Agents", "POS/CRM Integration", "Priority Support", "Advanced Analytics"],
+          roi: "Est. ROI: 5x-10x",
+          cta: "Apply for Pilot",
           isPopular: true
         },
         {
           name: "Enterprise",
-          price: "Custom",
-          period: "",
-          description: "Full digital transformation.",
-          features: ["Unlimited Agents", "Custom LLM Training", "On-premise Deployment"],
-          roi: "Est. Savings: $50k+/mo",
-          cta: "Contact Sales"
+          tagline: "Full Transformation",
+          description: "Custom LLM training and on-premise deployment options.",
+          features: ["Unlimited Agents", "Custom LLM Fine-tuning", "Dedicated Success Manager", "SLA Guarantees"],
+          roi: "Strategic Partnership",
+          cta: "Book Strategy Call"
         }
       ]
     },
@@ -178,12 +175,6 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           client: "Kuwait Laundry Co.",
           industry: "Services",
           title: "Scaling to 12k Orders",
-          background: "",
-          problem: "",
-          solution: "",
-          outcome: "",
-          testimonial: "",
-          image: "",
           stats: [
             { label: "Orders Automated", value: "12,000/mo" },
             { label: "Revenue Increase", value: "+35%" }
@@ -196,12 +187,6 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           client: "Riyadh Medical",
           industry: "Healthcare",
           title: "Eliminating Missed Calls",
-          background: "",
-          problem: "",
-          solution: "",
-          outcome: "",
-          testimonial: "",
-          image: "",
           stats: [
             { label: "Call Answer Rate", value: "99.8%" },
             { label: "No-Show Reduction", value: "-40%" }
@@ -232,29 +217,30 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           answer: "We support deep API integrations with major regional systems like Foodics, CleanCloud, Odoo, Salesforce, and Zoho."
         },
         {
-          question: "What happens if the AI can't answer?",
-          answer: "The system intelligently detects uncertainty and escalates the conversation to a human agent via WhatsApp or email, providing them with the full chat context."
+          question: "How do I get started?",
+          answer: "Book a strategy call or start a pilot. We will assess your needs and propose a tailored automation roadmap."
         }
       ]
     },
     contact: {
       title: "Start Your Transformation",
-      subtitle: "Book a strategy call or start your free trial today.",
+      subtitle: "Book a strategy call or start your free pilot today.",
       nameLabel: "Full Name",
       emailLabel: "Work Email",
       phoneLabel: "Mobile Number",
       messageLabel: "Message",
-      submitBtn: "Get Started",
+      submitBtn: "Get my automation roadmap",
+      disclaimer: "We respond within 24 hours. WhatsApp follow-up available.",
       form: {
         name: "Full Name",
         email: "Work Email",
         phone: "Mobile Number",
-        submit: "Get Started"
+        submit: "Get my automation roadmap"
       }
     },
     aiChat: {
       trigger: "Chat with Riwa",
-      placeholder: "Ask about pricing...",
+      placeholder: "Ask about automation...",
       welcome: "Hi! I'm Riwa. How can I help automate your business today?"
     }
   },
@@ -263,15 +249,15 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       { id: 'services', label: 'الخدمات', href: '#services' },
       { id: 'industries', label: 'القطاعات', href: '#industries' },
       { id: 'portfolio', label: 'أعمالنا', href: '#portfolio' },
-      { id: 'pricing', label: 'الأسعار', href: '#pricing' },
+      { id: 'pricing', label: 'الخطط', href: '#pricing' },
       { id: 'faq', label: 'الأسئلة الشائعة', href: '#faq' },
       { id: 'contact', label: 'حجز ديمو', href: '#contact' },
     ],
     hero: {
-      badge: "تجربة مجانية لمدة 7 أيام • لا تتطلب بطاقة ائتمان",
+      badge: "تجربة مجانية لمدة 7 أيام • أماكن محدودة",
       headline: "نظام التشغيل الذكي للأعمال الخليجية",
       subheadline: "أتمتة الدعم والمبيعات والعمليات عبر واتساب والمكالمات. دعم كامل للهجات الخليجية. إطلاق خلال أيام.",
-      ctaPrimary: "ابدأ تجربة مجانية",
+      ctaPrimary: "ابدأ التجربة المجانية",
       ctaSecondary: "حجز مكالمة استراتيجية",
       trustText: "موثوق به",
       trustTitle: "موثوق به من قبل الشركات الرائدة في الخليج"
@@ -294,7 +280,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           title: "وكلاء صوت ثنائيو اللغة",
           description: "إدارة الحجوزات وتذاكر الدعم وتأهيل المبيعات بطلاقة بالعربية والإنجليزية.",
           features: ["بدون انتظار", "مزامنة CRM", "رقم محلي"],
-          priceStart: "من 500$ / شهر"
+          priceStart: "خيارات تجريبية"
         },
         {
           id: 'whatsapp',
@@ -302,7 +288,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           title: "محرك إيرادات واتساب",
           description: "أتمتة استعادة السلة، مبيعات الكتالوج، ودعم العملاء.",
           features: ["واجهة رسمية", "حملات تسويقية", "دفع آلي"],
-          priceStart: "من 300$ / شهر"
+          priceStart: "خيارات تجريبية"
         },
         {
           id: 'ops',
@@ -310,7 +296,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           title: "تكامل شامل",
           description: "ربط الذكاء الاصطناعي بمنطق عملك الفعلي: نقاط البيع والمخزون.",
           features: ["CleanCloud / Foodics", "Salesforce", "Zapier"],
-          priceStart: "مخصص"
+          priceStart: "تكامل مخصص"
         }
       ]
     },
@@ -384,36 +370,33 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       ]
     },
     pricing: {
-      sectionTitle: "تسعير مبني على العائد",
-      sectionSubtitle: "خطط تدفع تكاليفها من خلال توفير العمالة.",
+      sectionTitle: "نماذج العمل",
+      sectionSubtitle: "حلول قابلة للتطوير تناسب مرحلة عملك.",
       plans: [
         {
-          name: "البداية",
-          price: "$999",
-          period: "/شهر",
-          description: "للأعمال المحلية.",
-          features: ["1 وكيل صوتي", "بوت واتساب أساسي", "تقارير شهرية"],
-          roi: "توفير متوقع: 2,500$ شهرياً",
-          cta: "ابدأ تجربة مجانية"
+          name: "التجربة الأولية",
+          tagline: "للأعمال المحلية",
+          description: "للأعمال المحلية التي تبدأ بالأتمتة.",
+          features: ["1 وكيل صوتي", "بوت واتساب أساسي", "تقارير شهرية", "دعم قياسي"],
+          roi: "عائد استثمار فوري",
+          cta: "ابدأ التجربة المجانية"
         },
         {
           name: "النمو",
-          price: "$2,499",
-          period: "/شهر",
-          description: "للشركات المتوسعة.",
-          features: ["3 وكلاء صوت", "ربط نقاط البيع", "دعم ذو أولوية"],
-          roi: "توفير متوقع: 8,000$ شهرياً",
-          cta: "ابدأ تجربة مجانية",
+          tagline: "للفرق المتوسعة",
+          description: "تكامل قوي للعمليات متعددة الفروع.",
+          features: ["3 وكلاء صوت", "ربط نقاط البيع", "دعم ذو أولوية", "تحليلات متقدمة"],
+          roi: "عائد 5x-10x",
+          cta: "ابدأ التجربة المجانية",
           isPopular: true
         },
         {
           name: "المؤسسات",
-          price: "مخصص",
-          period: "",
-          description: "تحول رقمي كامل.",
-          features: ["وكلاء غير محدودين", "تدريب خاص", "نشر محلي"],
-          roi: "توفير متوقع: 50k$+ شهرياً",
-          cta: "تواصل مع المبيعات"
+          tagline: "تحول كامل",
+          description: "تحول رقمي كامل ونشر مخصص.",
+          features: ["وكلاء غير محدودين", "تدريب خاص", "مدير نجاح مخصص", "ضمان مستوى الخدمة"],
+          roi: "شراكة استراتيجية",
+          cta: "حجز مكالمة استراتيجية"
         }
       ]
     },
@@ -427,12 +410,6 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           client: "مصبغة الكويت",
           industry: "خدمات",
           title: "أتمتة 12 ألف طلب",
-          background: "",
-          problem: "",
-          solution: "",
-          outcome: "",
-          testimonial: "",
-          image: "",
           stats: [
             { label: "طلبات مؤتمتة", value: "12,000/شهرياً" },
             { label: "زيادة إيرادات", value: "+35%" }
@@ -445,12 +422,6 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           client: "مركز الرياض الطبي",
           industry: "رعاية صحية",
           title: "القضاء على المكالمات الفائتة",
-          background: "",
-          problem: "",
-          solution: "",
-          outcome: "",
-          testimonial: "",
-          image: "",
           stats: [
             { label: "نسبة الرد", value: "99.8%" },
             { label: "تقليل التغيب", value: "-40%" }
@@ -481,8 +452,8 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           answer: "ندعم الربط العميق مع الأنظمة الرئيسية مثل فودكس، كلين كلاود، أودو، سيلزفورس وزوهو."
         },
         {
-          question: "ماذا يحدث إذا لم يعرف الذكاء الاصطناعي الإجابة؟",
-          answer: "يقوم النظام بتحويل المحادثة بذكاء إلى موظف بشري عبر واتساب أو البريد الإلكتروني مع توفير كامل سياق المحادثة."
+          question: "كيف أبدأ؟",
+          answer: "احجز مكالمة استراتيجية أو ابدأ تجربة. سنقوم بتقييم احتياجاتك واقتراح خارطة طريق أتمتة مخصصة."
         }
       ]
     },
@@ -493,17 +464,18 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       emailLabel: "بريد العمل",
       phoneLabel: "رقم الجوال",
       messageLabel: "الرسالة",
-      submitBtn: "ابدأ الآن",
+      submitBtn: "الحصول على خارطة الطريق",
+      disclaimer: "نرد خلال 24 ساعة. متاح المتابعة عبر واتساب.",
       form: {
         name: "الاسم الكامل",
         email: "بريد العمل",
         phone: "رقم الجوال",
-        submit: "ابدأ الآن"
+        submit: "الحصول على خارطة الطريق"
       }
     },
     aiChat: {
       trigger: "تحدث معنا",
-      placeholder: "اسأل عن الأسعار...",
+      placeholder: "اسأل عن الأتمتة...",
       welcome: "مرحباً! كيف يمكنني مساعدتك في أتمتة عملك اليوم؟"
     }
   }
