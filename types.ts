@@ -41,6 +41,7 @@ export interface PricingPlan {
   price?: string; // Made optional
   period?: string; // Made optional
   description: string;
+  featuresTitle?: string;
   features: string[];
   cta: string;
   roi?: string;

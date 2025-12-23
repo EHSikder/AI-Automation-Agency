@@ -2,10 +2,10 @@
 import { Translation } from './types';
 
 export const COMPANY_INFO = {
-  name: "Riwa AI",
-  email: "hello@riwa.ai",
-  phone: "+971 4 123 4567",
-  hq: "Dubai, UAE",
+  name: "RIWA AI",
+  email: "contact@riwaai.com",
+  phone: "+965 60751323",
+  hq: "Kuwait City, Al Asimah, Kuwait",
   markets: "UAE, KSA, Kuwait, Qatar"
 };
 
@@ -30,7 +30,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       trustTitle: "TRUSTED BY FORWARD-THINKING BRANDS"
     },
     featuresStrip: {
-      title: "Why Riwa?",
+      title: "Why RIWA?",
       items: [
         { icon: "BrainCircuit", title: "Dialect Native", desc: "Trained on Khaleeji, Levantine, and Egyptian dialects for natural conversation." },
         { icon: "Zap", title: "POS Integrated", desc: "Deep sync with Foodics, CleanCloud, and Odoo. We don't just chat, we do." },
@@ -109,7 +109,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           id: 'restaurants',
           title: "Restaurants",
           description: "Handle reservations & catering queries 24/7.",
-          problem: "Problem: Missed calls during rush hour.",
+          problem: "Problem: Missed calls during xrush hour.",
           solution: "Solution: Voice agent handles bookings.",
           kpi: "100% Call Answer Rate",
           kpis: ["100% Answer Rate"]
@@ -166,35 +166,51 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       sectionSubtitle: "Scalable solutions tailored to your business stage. Start with a free pilot.",
       plans: [
         {
-          name: "Starter Pilot",
+          name: "Core AI Automation",
           tagline: "For Local Businesses",
-          description: "Perfect for single-location businesses starting with automation.",
-          features: ["1 AI Voice Agent", "Basic WhatsApp Bot", "Monthly Reporting", "Standard Support"],
+          description: "An intelligent AI agent that handles customer conversations, captures data, and automates repetitive workflows—without disrupting your existing systems.",
+          featuresTitle: "What’s included:",
+          features: [
+            "AI-powered customer handling (chat-based)",
+            "Workflow automation (leads, support, operations)",
+            "Monthly performance summary",
+            "Ongoing maintenance & standard support"
+          ],
           roi: "Est. ROI: 3x first month",
-          cta: "Apply for Pilot"
+          cta: "Book Strategy Call"
         },
         {
-          name: "Growth",
+          name: "Scalable AI Systems",
           tagline: "For Scaling Teams",
-          description: "Robust integration for multi-branch operations.",
-          features: ["3 AI Agents", "POS/CRM Integration", "Priority Support", "Advanced Analytics"],
-          roi: "Est. ROI: 5x-10x",
-          cta: "Apply for Pilot",
+          description: "Multiple AI agents working together with custom integrations to automate complex operations and decision-making across your business.",
+          featuresTitle: "What’s included:",
+          features: [
+            "Multiple specialized AI agents",
+            "Custom system & API integrations",
+            "Priority support & faster iterations",
+            "Advanced analytics & monthly optimization updates"
+          ],
+          cta: "Book Strategy Call",
           isPopular: true
         },
         {
-          name: "Enterprise",
+          name: "Full Business Automation",
           tagline: "Full Transformation",
-          description: "Custom LLM training and on-premise deployment options.",
-          features: ["Unlimited Agents", "Custom LLM Fine-tuning", "Dedicated Success Manager", "SLA Guarantees"],
-          roi: "Strategic Partnership",
+          description: "A complete AI-driven business system designed to automate operations, train AI agents on your processes, and continuously optimize performance.",
+          featuresTitle: "What’s included:",
+          features: [
+            "End-to-end business automation",
+            "Custom-trained AI agents for your workflows",
+            "Monthly system tracking, refinement & upgrades",
+            "Strategic automation planning & execution"
+          ],
           cta: "Book Strategy Call"
         }
       ]
     },
     faq: {
       sectionTitle: "Frequently Asked Questions",
-      sectionSubtitle: "Everything you need to know about implementing Riwa AI.",
+      sectionSubtitle: "Everything you need to know about implementing RIWA AI.",
       items: [
         {
           question: "How long does it take to launch?",
@@ -235,9 +251,9 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       }
     },
     aiChat: {
-      trigger: "Chat with Riwa",
+      trigger: "Chat with RIWA",
       placeholder: "Ask about automation...",
-      welcome: "Hi! I'm Riwa. How can I help automate your business today?"
+      welcome: "Hi! I'm RIWA. How can I help automate your business today?"
     }
   },
   ar: {
@@ -258,7 +274,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       trustTitle: "موثوق به من قبل الشركات الرائدة في الخليج"
     },
     featuresStrip: {
-      title: "لماذا Riwa؟",
+      title: "لماذا RIWA؟",
       items: [
         { icon: "BrainCircuit", title: "دعم اللهجات", desc: "مدرب على اللهجات الخليجية والشامية والمصرية." },
         { icon: "Zap", title: "تكامل الأنظمة", desc: "ربط مباشر مع Foodics و CleanCloud و Odoo." },
@@ -394,35 +410,51 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       sectionSubtitle: "حلول قابلة للتطوير تناسب مرحلة عملك.",
       plans: [
         {
-          name: "التجربة الأولية",
+          name: "أتمتة الذكاء الاصطناعي الأساسية",
           tagline: "للأعمال المحلية",
-          description: "للأعمال المحلية التي تبدأ بالأتمتة.",
-          features: ["1 وكيل صوتي", "بوت واتساب أساسي", "تقارير شهرية", "دعم قياسي"],
+          description: "وكيل ذكاء اصطناعي ذكي يدير محادثات العملاء، ويجمع البيانات، ويؤتمت مهام العمل المتكررة - دون تعطيل أنظمتك الحالية.",
+          featuresTitle: "يتضمن العرض:",
+          features: [
+            "إدارة العملاء المدعومة بالذكاء الاصطناعي (عبر الدردشة)",
+            "أتمتة سير العمل (العملاء المحتملون، الدعم، العمليات)",
+            "ملخص شهري للأداء",
+            "صيانة مستمرة ودعم قياسي"
+          ],
           roi: "عائد استثمار فوري",
-          cta: "ابدأ التجربة المجانية"
+          cta: "حجز مكالمة استراتيجية"
         },
         {
-          name: "النمو",
+          name: "أنظمة الذكاء الاصطناعي القابلة للتوسع",
           tagline: "للفرق المتوسعة",
-          description: "تكامل قوي للعمليات متعددة الفروع.",
-          features: ["3 وكلاء صوت", "ربط نقاط البيع", "دعم ذو أولوية", "تحليلات متقدمة"],
-          roi: "عائد 5x-10x",
-          cta: "ابدأ التجربة المجانية",
+          description: "وكلاء ذكاء اصطناعي متعددون يعملون معاً مع تكاملات مخصصة لأتمتة العمليات المعقدة واتخاذ القرارات عبر عملك.",
+          featuresTitle: "يتضمن العرض:",
+          features: [
+            "وكلاء ذكاء اصطناعي متخصصون ومتعددون",
+            "تكاملات مخصصة للأنظمة وواجهات البرمجية",
+            "دعم ذو أولوية وتطويرات أسرع",
+            "تحليلات متقدمة وتحديثات تحسين شهرية"
+          ],
+          cta: "حجز مكالمة استراتيجية",
           isPopular: true
         },
         {
-          name: "المؤسسات",
+          name: "أتمتة الأعمال الكاملة",
           tagline: "تحول كامل",
-          description: "تحول رقمي كامل ونشر مخصص.",
-          features: ["وكلاء غير محدودين", "تدريب خاص", "مدير نجاح مخصص", "ضمان مستوى الخدمة"],
-          roi: "شراكة استراتيجية",
+          description: "نظام عمل كامل مدفوع بالذكاء الاصطناعي مصمم لأتمتة العمليات، وتدريب وكلاء الذكاء الاصطناعي على إجراءاتك، وتحسين الأداء باستمرار.",
+          featuresTitle: "يتضمن العرض:",
+          features: [
+            "أتمتة الأعمال من البداية إلى النهاية",
+            "وكلاء ذكاء اصطناعي مدربون خصيصاً لسير عملك",
+            "تتبع شهري للنظام وتحسينه وترقيته",
+            "تخطيط وتنفيذ الأتمتة الاستراتيجية"
+          ],
           cta: "حجز مكالمة استراتيجية"
         }
       ]
     },
     faq: {
       sectionTitle: "الأسئلة الشائعة",
-      sectionSubtitle: "كل ما تحتاج لمعرفته حول تطبيق Riwa AI.",
+      sectionSubtitle: "كل ما تحتاج لمعرفته حول تطبيق RIWA AI.",
       items: [
         {
           question: "كم يستغرق الإطلاق؟",

@@ -207,11 +207,9 @@ const PricingSection = () => {
         
         <div className="grid lg:grid-cols-3 gap-8 items-start">
           {c.plans.map((plan, idx) => {
-            // Determine if this is a "Book Strategy Call" button
-            const isStrategyCall = plan.cta === CONTENT.en.hero.ctaSecondary || plan.cta === CONTENT.ar.hero.ctaSecondary;
-            const href = isStrategyCall ? STRATEGY_CALL_URL : "#contact";
-            const target = isStrategyCall ? "_blank" : undefined;
-            const rel = isStrategyCall ? "noopener noreferrer" : undefined;
+            const href = STRATEGY_CALL_URL;
+            const target = "_blank";
+            const rel = "noopener noreferrer";
 
             return (
               <div key={idx} className={`rounded-[2rem] p-10 relative flex flex-col transition-transform hover:-translate-y-2 duration-300 ${
@@ -226,11 +224,13 @@ const PricingSection = () => {
                 )}
                 
                 <div className="mb-8">
-                  <h3 className="text-lg font-medium text-white mb-2">{plan.name}</h3>
-                  <div className="flex items-baseline gap-1">
-                      <span className="text-2xl font-bold text-white">{plan.tagline}</span>
-                  </div>
-                  <p className="text-sm text-text-muted mt-4">{plan.description}</p>
+                  <h3 className="text-lg font-bold text-white mb-2">{plan.name}</h3>
+                  {plan.tagline && (
+                    <div className="flex items-baseline gap-1">
+                        <span className="text-2xl font-bold text-white">{plan.tagline}</span>
+                    </div>
+                  )}
+                  <p className="text-sm text-text-main mt-4 leading-relaxed opacity-90">{plan.description}</p>
                 </div>
 
                 {plan.roi && (
@@ -244,6 +244,9 @@ const PricingSection = () => {
                 )}
 
                 <div className="flex-grow mb-10">
+                  {plan.featuresTitle && (
+                    <h4 className="text-sm font-bold text-white mb-4">{plan.featuresTitle}</h4>
+                  )}
                   <ul className="space-y-4">
                       {plan.features.map((feat, i) => (
                       <li key={i} className="flex items-center gap-3 text-sm text-text-main">

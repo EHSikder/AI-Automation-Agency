@@ -1,21 +1,15 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
 import { CONTENT, COMPANY_INFO } from '../constants';
-import { Menu, X, Globe } from 'lucide-react';
-
-// Custom Riwa Logo Component using provided image
-const RiwaLogo = () => (
-  <img 
-    src="https://cdn.discordapp.com/attachments/1442253968159019029/1448320095771168848/image.png?ex=693ad4b3&is=69398333&hm=b2580e7b53140c276552b30368afdd74957cbaafdc269b9a4c41134c1aef0141" 
-    alt="Riwa AI" 
-    className="w-8 h-8 object-contain"
-  />
-);
+import { Menu, X, Globe, Info, Clock } from 'lucide-react';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { language, toggleLanguage } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showComingSoon, setShowComingSoon] = useState(false);
+  
   const content = CONTENT[language];
   const isRTL = language === 'ar';
 
@@ -29,15 +23,44 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-x-hidden bg-background text-text-main font-sans selection:bg-cta selection:text-white">
+      {/* Coming Soon Modal */}
+      {showComingSoon && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-background/80 backdrop-blur-md animate-in fade-in duration-300">
+          <div 
+            className="bg-surface border border-border rounded-[2.5rem] p-8 md:p-12 max-w-md w-full shadow-2xl relative overflow-hidden text-center transform animate-in zoom-in-95 duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-cta rounded-full opacity-50"></div>
+            <div className="w-20 h-20 bg-cta/10 rounded-full flex items-center justify-center mx-auto mb-6 text-cta">
+              <Clock className="w-10 h-10" />
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              {language === 'en' ? 'Coming Soon' : 'قريباً جداً'}
+            </h3>
+            <p className="text-text-main mb-8 leading-relaxed">
+              {language === 'en' 
+                ? "We're putting the finishing touches on our company story. Stay tuned for a deeper look into the RIWA vision."
+                : "نحن نضع اللمسات الأخيرة على قصة شركتنا. تابعونا للحصول على نظرة أعمق لرؤية ريوا."}
+            </p>
+            <button 
+              onClick={() => setShowComingSoon(false)}
+              className="w-full bg-cta text-white py-4 rounded-full font-bold hover:bg-cta-hover transition-all"
+            >
+              {language === 'en' ? 'Close' : 'إغلاق'}
+            </button>
+          </div>
+          <div className="absolute inset-0 -z-10" onClick={() => setShowComingSoon(false)}></div>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-300 pointer-events-none ${scrolled ? 'py-2' : 'py-6'}`}>
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`rounded-full border border-border/40 backdrop-blur-xl bg-background/80 px-6 transition-all duration-300 pointer-events-auto ${scrolled ? 'shadow-lg py-2' : 'py-3'}`}>
             <div className="flex justify-between items-center h-10 md:h-12">
-              {/* Logo */}
+              {/* Brand Name (Logo Removed) */}
               <div className="flex-shrink-0 flex items-center cursor-pointer gap-3 group" onClick={() => window.scrollTo(0,0)}>
-                <RiwaLogo />
-                <span className="font-bold text-2xl tracking-wide text-white group-hover:text-white/90 transition-colors font-sans">Riwa AI</span>
+                <span className="font-bold text-2xl tracking-wide text-white group-hover:text-white/90 transition-colors font-sans uppercase">RIWA AI</span>
               </div>
 
               {/* Desktop Menu */}
@@ -119,8 +142,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center gap-2 mb-4">
-                <RiwaLogo />
-                <span className="text-xl font-bold text-white tracking-wide">Riwa AI</span>
+                <span className="text-xl font-bold text-white tracking-wide uppercase">RIWA AI</span>
               </div>
               <p className="text-sm leading-relaxed mb-6 opacity-80">
                 {language === 'en' 
@@ -138,18 +160,23 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <div>
               <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">{language === 'en' ? 'Legal' : 'قانوني'}</h4>
               <ul className="space-y-3 text-sm font-light">
-                <li><a href="#" className="hover:text-cta transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-cta transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-cta transition-colors">Data Processing (DPA)</a></li>
+                <li><a href="https://www.termsfeed.com/live/a5dd6369-d02b-4f54-b69d-c2c735c6a26d" target="_blank" rel="noopener noreferrer" className="hover:text-cta transition-colors">Privacy Policy</a></li>
+                <li><a href="https://www.termsfeed.com/live/8e77f935-0ce6-445b-bae9-cf13759f90a0" target="_blank" rel="noopener noreferrer" className="hover:text-cta transition-colors">Terms of Service</a></li>
               </ul>
             </div>
 
             <div>
               <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">{language === 'en' ? 'Company' : 'الشركة'}</h4>
               <ul className="space-y-3 text-sm font-light">
-                <li><a href="#" className="hover:text-cta transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-cta transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-cta transition-colors">Contact</a></li>
+                <li>
+                  <button 
+                    onClick={() => setShowComingSoon(true)} 
+                    className="hover:text-cta transition-colors flex items-center gap-1.5"
+                  >
+                    {language === 'en' ? 'About Us' : 'من نحن'}
+                  </button>
+                </li>
+                <li><a href="#contact" className="hover:text-cta transition-colors">{language === 'en' ? 'Contact' : 'تواصل معنا'}</a></li>
               </ul>
             </div>
 
@@ -163,7 +190,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             </div>
           </div>
           <div className="border-t border-border mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-50">
-            <p>&copy; {new Date().getFullYear()} Riwa AI. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} RIWA AI. All rights reserved.</p>
           </div>
         </div>
       </footer>

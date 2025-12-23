@@ -14,7 +14,7 @@ export const generateResponse = async (userMessage: string, lang: 'en' | 'ar'): 
 
   try {
     const context = lang === 'en' ? JSON.stringify(CONTENT.en) : JSON.stringify(CONTENT.ar);
-    const systemPrompt = `You are a helpful sales assistant for Riwa AI. 
+    const systemPrompt = `You are a helpful sales assistant for RIWA AI. 
     Use the following website content context to answer questions: ${context}.
     Keep answers short (under 50 words), professional, and encouraging.
     If the user speaks Arabic, reply in Arabic. If English, reply in English.`;
