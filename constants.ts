@@ -1,3 +1,4 @@
+
 import { Translation } from './types';
 
 export const COMPANY_INFO = {
@@ -8,13 +9,14 @@ export const COMPANY_INFO = {
   markets: "UAE, KSA, Kuwait, Qatar"
 };
 
+export const STRATEGY_CALL_URL = "https://riwa-ekram.youcanbook.me";
+
 export const CONTENT: Record<'en' | 'ar', Translation> = {
   en: {
     nav: [
       { id: 'services', label: 'Capabilities', href: '#services' },
       { id: 'industries', label: 'Industries', href: '#industries' },
-      { id: 'portfolio', label: 'Case Studies', href: '#portfolio' },
-      { id: 'pricing', label: 'Engagement', href: '#pricing' }, // Renamed from Pricing
+      { id: 'pricing', label: 'Engagement', href: '#pricing' },
       { id: 'faq', label: 'FAQ', href: '#faq' },
       { id: 'contact', label: 'Book Demo', href: '#contact' },
     ],
@@ -25,7 +27,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       ctaPrimary: "Start 7-Day Free Pilot",
       ctaSecondary: "Book Strategy Call",
       trustText: "Trusted by leading enterprises",
-      trustTitle: "TRUSTED BY FORWARD-THINKING BRANDS IN THE GCC"
+      trustTitle: "TRUSTED BY FORWARD-THINKING BRANDS"
     },
     featuresStrip: {
       title: "Why Riwa?",
@@ -44,30 +46,55 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           iconName: 'Phone',
           title: "Bilingual Voice Agents",
           description: "Handle reservations, support tickets, and sales qualification calls in fluent Arabic & English.",
-          features: ["Zero hold times", "CRM instant sync", "Local number"],
-          priceStart: "View Pilot Options"
+          features: ["Zero hold times", "CRM instant sync", "Local number"]
         },
         {
           id: 'whatsapp',
           iconName: 'MessageSquare',
-          title: "WhatsApp Revenue Engine",
+          title: "Chatbot Revenue Engine",
           description: "Automate cart recovery, catalog sales, and customer support on the Gulf's #1 app.",
-          features: ["Official Meta API", "Broadcast marketing", "Auto-checkout"],
-          priceStart: "View Pilot Options"
+          features: ["Official Meta API", "Broadcast marketing", "Auto-checkout"]
+        },
+        {
+          id: 'scraping',
+          iconName: 'Search',
+          title: "Autonomous Lead Scraping",
+          description: "Hyper-targeted B2B lead generation across LinkedIn, Google Maps, and local GCC directories.",
+          features: ["98% Data Accuracy", "Automated CRM Export", "Real-time Intent Tracking"]
+        },
+        {
+          id: 'sales',
+          iconName: 'UserPlus',
+          title: "AI Sales Closers",
+          description: "Autonomous sales sequences that move leads from cold outreach to signed invoices.",
+          features: ["Objection Handling", "Calendar Booking", "Multi-channel Follow-up"]
+        },
+        {
+          id: 'social',
+          iconName: 'Share2',
+          title: "Social Media Architect",
+          description: "24/7 community management and content generation localized for Instagram, TikTok, and Snap.",
+          features: ["Dialect Sentiment Analysis", "Auto-Engagement", "Trend Detection"]
+        },
+        {
+          id: 'design',
+          iconName: 'Palette',
+          title: "Generative Visual Studio",
+          description: "Transform raw product photos into 4K studio-quality marketing assets in seconds using AI.",
+          features: ["Batch Image Processing", "Consistent Brand Style", "Instant Ad-Ready Exports"]
         },
         {
           id: 'ops',
           iconName: 'Workflow',
           title: "Full-Stack Integrations",
           description: "Connect your AI to your actual business logic: POS, Inventory, and Dispatch systems.",
-          features: ["CleanCloud / Foodics", "Salesforce / Hubspot", "Zapier / Make"],
-          priceStart: "Custom Integration"
+          features: ["CleanCloud / Foodics", "Salesforce / Hubspot", "Zapier / Make"]
         }
       ]
     },
     industries: {
       sectionTitle: "Pre-Trained Workflows",
-      sectionSubtitle: "Select your industry to see specific automation use cases.",
+      sectionSubtitle: "",
       items: [
         {
           id: 'laundry',
@@ -165,37 +192,6 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
         }
       ]
     },
-    portfolio: {
-      sectionTitle: "Proven Results",
-      sectionSubtitle: "We let the numbers speak for themselves.",
-      cta: "View Full Case Studies",
-      items: [
-        {
-          id: '1',
-          client: "Kuwait Laundry Co.",
-          industry: "Services",
-          title: "Scaling to 12k Orders",
-          stats: [
-            { label: "Orders Automated", value: "12,000/mo" },
-            { label: "Revenue Increase", value: "+35%" }
-          ],
-          content: "Replaced manual WhatsApp entry with a CleanCloud-integrated AI agent. Staff now focuses purely on quality control.",
-          quote: "Riwa AI handles 90% of our bookings. It's like magic."
-        },
-        {
-          id: '2',
-          client: "Riyadh Medical",
-          industry: "Healthcare",
-          title: "Eliminating Missed Calls",
-          stats: [
-            { label: "Call Answer Rate", value: "99.8%" },
-            { label: "No-Show Reduction", value: "-40%" }
-          ],
-          content: "Deployed a bilingual voice agent to handle appointments during peak hours and automated WhatsApp reminders.",
-          quote: "Patients love booking at 2AM on a Friday."
-        }
-      ]
-    },
     faq: {
       sectionTitle: "Frequently Asked Questions",
       sectionSubtitle: "Everything you need to know about implementing Riwa AI.",
@@ -209,16 +205,16 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           answer: "Yes, our AI is specifically trained on Khaleeji, Levantine, and Egyptian dialects to ensure natural, effective communication with your customers."
         },
         {
-          question: "Is my data secure?",
-          answer: "Absolutely. We use bank-grade encryption and offer local data residency options within GCC borders (Saudi Arabia/UAE) to comply with data sovereignty regulations."
-        },
-        {
           question: "Can I integrate with my existing POS?",
-          answer: "We support deep API integrations with major regional systems like Foodics, CleanCloud, Odoo, Salesforce, and Zoho."
+          answer: "We support deep API integrations with major regional systems like Foodics, CleanCloud, Odoo, Salesforce, Zoho and others"
         },
         {
-          question: "How do I get started?",
-          answer: "Book a strategy call or start a pilot. We will assess your needs and propose a tailored automation roadmap."
+          question: "Is this system connected to our existing software?",
+          answer: "Yes. We integrate directly with your existing systems such as: Order management software (e.g. CleanCloud), CRMs, Google Sheets, and Internal tools. No need to replace your current setup."
+        },
+        {
+          question: "Is customer data safe?",
+          answer: "Yes. We follow strict data-handling practices: No sensitive payment data is stored, Secure APIs and credentials, Access control for admins only."
         }
       ]
     },
@@ -248,7 +244,6 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
     nav: [
       { id: 'services', label: 'الخدمات', href: '#services' },
       { id: 'industries', label: 'القطاعات', href: '#industries' },
-      { id: 'portfolio', label: 'أعمالنا', href: '#portfolio' },
       { id: 'pricing', label: 'الخطط', href: '#pricing' },
       { id: 'faq', label: 'الأسئلة الشائعة', href: '#faq' },
       { id: 'contact', label: 'حجز ديمو', href: '#contact' },
@@ -279,30 +274,55 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           iconName: 'Phone',
           title: "وكلاء صوت ثنائيو اللغة",
           description: "إدارة الحجوزات وتذاكر الدعم وتأهيل المبيعات بطلاقة بالعربية والإنجليزية.",
-          features: ["بدون انتظار", "مزامنة CRM", "رقم محلي"],
-          priceStart: "خيارات تجريبية"
+          features: ["بدون انتظار", "مزامنة CRM", "رقم محلي"]
         },
         {
           id: 'whatsapp',
           iconName: 'MessageSquare',
-          title: "محرك إيرادات واتساب",
+          title: "محرك إيرادات الشات بوت",
           description: "أتمتة استعادة السلة، مبيعات الكتالوج، ودعم العملاء.",
-          features: ["واجهة رسمية", "حملات تسويقية", "دفع آلي"],
-          priceStart: "خيارات تجريبية"
+          features: ["واجهة رسمية", "حملات تسويقية", "دفع آلي"]
+        },
+        {
+          id: 'scraping',
+          iconName: 'Search',
+          title: "التنقيب الذكي عن العملاء",
+          description: "توليد عملاء محتملين B2B من لينكد إن، خرائط جوجل، والأدلة التجارية في دول الخليج.",
+          features: ["دقة بيانات 98٪", "تصدير تلقائي لـ CRM", "تتبع نية الشراء"]
+        },
+        {
+          id: 'sales',
+          iconName: 'UserPlus',
+          title: "وكلاء المبيعات المستقلون",
+          description: "سلسلة مبيعات مؤتمتة تبدأ من التواصل البارد وتنتهي بتوقيع العقود.",
+          features: ["معالجة الاعتراضات", "جدولة المواعيد", "متابعة متعددة القنوات"]
+        },
+        {
+          id: 'social',
+          iconName: 'Share2',
+          title: "مهندس التواصل الاجتماعي",
+          description: "إدارة مجتمعات وتوليد محتوى مخصص لإنستغرام وتيك توك وسناب شات على مدار الساعة.",
+          features: ["تحليل المشاعر باللهجة", "تفاعل تلقائي", "كشف التوجهات"]
+        },
+        {
+          id: 'design',
+          iconName: 'Palette',
+          title: "أتمتة التصميم البصري",
+          description: "تحويل صور المنتجات العادية إلى أصول تسويقية بجودة استوديو 4K في ثوانٍ.",
+          features: ["معالجة صور جماعية", "هوية بصرية موحدة", "تصدير جاهز للإعلانات"]
         },
         {
           id: 'ops',
           iconName: 'Workflow',
           title: "تكامل شامل",
           description: "ربط الذكاء الاصطناعي بمنطق عملك الفعلي: نقاط البيع والمخزون.",
-          features: ["CleanCloud / Foodics", "Salesforce", "Zapier"],
-          priceStart: "تكامل مخصص"
+          features: ["CleanCloud / Foodics", "Salesforce", "Zapier"]
         }
       ]
     },
     industries: {
       sectionTitle: "سير عمل جاهز",
-      sectionSubtitle: "اختر قطاعك لرؤية حالات استخدام محددة.",
+      sectionSubtitle: "",
       items: [
         {
           id: 'laundry',
@@ -400,37 +420,6 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
         }
       ]
     },
-    portfolio: {
-      sectionTitle: "نتائج مثبتة",
-      sectionSubtitle: "ندع الأرقام تتحدث عن نفسها.",
-      cta: "عرض جميع الحالات",
-      items: [
-        {
-          id: '1',
-          client: "مصبغة الكويت",
-          industry: "خدمات",
-          title: "أتمتة 12 ألف طلب",
-          stats: [
-            { label: "طلبات مؤتمتة", value: "12,000/شهرياً" },
-            { label: "زيادة إيرادات", value: "+35%" }
-          ],
-          content: "استبدال الإدخال اليدوي بوكيل ذكي مرتبط بـ CleanCloud.",
-          quote: "Riwa AI يعالج 90٪ من حجوزاتنا."
-        },
-        {
-          id: '2',
-          client: "مركز الرياض الطبي",
-          industry: "رعاية صحية",
-          title: "القضاء على المكالمات الفائتة",
-          stats: [
-            { label: "نسبة الرد", value: "99.8%" },
-            { label: "تقليل التغيب", value: "-40%" }
-          ],
-          content: "نشر وكيل صوتي ثنائي اللغة للتعامل مع المواعيد وقت الذروة.",
-          quote: "المرضى يحبون الحجز في أي وقت."
-        }
-      ]
-    },
     faq: {
       sectionTitle: "الأسئلة الشائعة",
       sectionSubtitle: "كل ما تحتاج لمعرفته حول تطبيق Riwa AI.",
@@ -444,16 +433,16 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           answer: "نعم، تم تدريب نماذجنا على اللهجات الخليجية والشامية والمصرية لضمان تواصل طبيعي وفعال."
         },
         {
-          question: "هل بياناتي آمنة؟",
-          answer: "بالتأكيد. نستخدم تشفيراً عالي المستوى ونوفر خيارات استضافة البيانات محلياً داخل دول مجلس التعاون الخليجي للامتثال للقوانين."
-        },
-        {
           question: "هل يمكن الربط مع نظام نقاط البيع لدي؟",
-          answer: "ندعم الربط العميق مع الأنظمة الرئيسية مثل فودكس، كلين كلاود، أودو، سيلزفورس وزوهو."
+          answer: "ندعم الربط العميق مع الأنظمة الرئيسية مثل فودكس، كلين كلاود، أودو، سيلزفورس، زوهو وغيرها."
         },
         {
-          question: "كيف أبدأ؟",
-          answer: "احجز مكالمة استراتيجية أو ابدأ تجربة. سنقوم بتقييم احتياجاتك واقتراح خارطة طريق أتمتة مخصصة."
+          question: "هل يتصل هذا النظام ببرامجنا الحالية؟",
+          answer: "نعم. نحن نتكامل مباشرة مع أنظمتك الحالية مثل: برامج إدارة الطلبات (مثل CleanCloud)، وأنظمة إدارة العملاء (CRMs)، وجداول بيانات Google، والأدوات الداخلية. لا داعي لاستبدال إعدادك الحالي."
+        },
+        {
+          question: "هل بيانات العملاء آمنة؟",
+          answer: "نعم. نحن نتبع ممارسات صارمة للتعامل مع البيانات: لا يتم تخزين بيانات الدفع الحساسة، واجهات برمجة تطبيقات (APIs) وبيانات اعتماد آمنة، التحكم في الوصول للمسؤولين فقط."
         }
       ]
     },

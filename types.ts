@@ -1,3 +1,4 @@
+
 export type Language = 'en' | 'ar';
 
 export interface NavItem {
@@ -46,22 +47,6 @@ export interface PricingPlan {
   isPopular?: boolean;
 }
 
-export interface PortfolioItem {
-  id: string;
-  client: string;
-  industry: string;
-  title: string;
-  background?: string;
-  problem?: string;
-  solution?: string;
-  outcome?: string;
-  testimonial?: string;
-  image?: string;
-  stats: { label: string; value: string }[];
-  content: string;
-  quote: string;
-}
-
 export interface FaqItem {
   question: string;
   answer: string;
@@ -101,12 +86,6 @@ export interface Translation {
     sectionTitle: string;
     sectionSubtitle: string;
     plans: PricingPlan[];
-  };
-  portfolio: {
-    sectionTitle: string;
-    sectionSubtitle: string;
-    cta: string;
-    items: PortfolioItem[];
   };
   faq: {
     sectionTitle: string;

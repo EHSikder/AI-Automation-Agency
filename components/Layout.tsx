@@ -3,6 +3,15 @@ import { useLanguage } from './LanguageContext';
 import { CONTENT, COMPANY_INFO } from '../constants';
 import { Menu, X, Globe } from 'lucide-react';
 
+// Custom Riwa Logo Component using provided image
+const RiwaLogo = () => (
+  <img 
+    src="https://cdn.discordapp.com/attachments/1442253968159019029/1448320095771168848/image.png?ex=693ad4b3&is=69398333&hm=b2580e7b53140c276552b30368afdd74957cbaafdc269b9a4c41134c1aef0141" 
+    alt="Riwa AI" 
+    className="w-8 h-8 object-contain"
+  />
+);
+
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { language, toggleLanguage } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,11 +35,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           <div className={`rounded-full border border-border/40 backdrop-blur-xl bg-background/80 px-6 transition-all duration-300 pointer-events-auto ${scrolled ? 'shadow-lg py-2' : 'py-3'}`}>
             <div className="flex justify-between items-center h-10 md:h-12">
               {/* Logo */}
-              <div className="flex-shrink-0 flex items-center cursor-pointer gap-2 group" onClick={() => window.scrollTo(0,0)}>
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-white font-bold shadow-lg">
-                  <div className="w-3 h-3 bg-white rounded-sm"></div>
-                </div>
-                <span className="font-bold text-xl tracking-tight text-white">Riwa AI</span>
+              <div className="flex-shrink-0 flex items-center cursor-pointer gap-3 group" onClick={() => window.scrollTo(0,0)}>
+                <RiwaLogo />
+                <span className="font-bold text-2xl tracking-wide text-white group-hover:text-white/90 transition-colors font-sans">Riwa AI</span>
               </div>
 
               {/* Desktop Menu */}
@@ -111,7 +118,10 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-1">
-              <span className="text-xl font-bold text-white block mb-4 tracking-tight">Riwa AI</span>
+              <div className="flex items-center gap-2 mb-4">
+                <RiwaLogo />
+                <span className="text-xl font-bold text-white tracking-wide">Riwa AI</span>
+              </div>
               <p className="text-sm leading-relaxed mb-6 opacity-80">
                 {language === 'en' 
                   ? "Architecting the future of Gulf enterprise through intelligent automation layers."
@@ -119,9 +129,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               </p>
               <div className="flex space-x-4 rtl:space-x-reverse opacity-60">
                  {/* Social Placeholders */}
-                 <div className="w-8 h-8 bg-white/10 rounded-full"></div>
-                 <div className="w-8 h-8 bg-white/10 rounded-full"></div>
-                 <div className="w-8 h-8 bg-white/10 rounded-full"></div>
+                 <div className="w-8 h-8 bg-white/10 rounded-full hover:bg-white/20 transition-colors cursor-pointer"></div>
+                 <div className="w-8 h-8 bg-white/10 rounded-full hover:bg-white/20 transition-colors cursor-pointer"></div>
+                 <div className="w-8 h-8 bg-white/10 rounded-full hover:bg-white/20 transition-colors cursor-pointer"></div>
               </div>
             </div>
             

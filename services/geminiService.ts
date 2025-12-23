@@ -1,11 +1,12 @@
+
 import { GoogleGenAI } from "@google/genai";
 import { CONTENT } from '../constants';
 
-const API_KEY = process.env.API_KEY || ''; // In production, this would be handled securely
-const ai = new GoogleGenAI({ apiKey: API_KEY });
+// Initializing the AI client as per the recommended pattern
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
 
 export const generateResponse = async (userMessage: string, lang: 'en' | 'ar'): Promise<string> => {
-  if (!API_KEY) {
+  if (!process.env.API_KEY) {
     return lang === 'en' 
       ? "Demo Mode: API Key missing. I would normally answer: " + userMessage 
       : "وضع تجريبي: مفتاح API مفقود. كنت سأجيب: " + userMessage;
@@ -13,13 +14,13 @@ export const generateResponse = async (userMessage: string, lang: 'en' | 'ar'): 
 
   try {
     const context = lang === 'en' ? JSON.stringify(CONTENT.en) : JSON.stringify(CONTENT.ar);
-    const systemPrompt = `You are a helpful sales assistant for GulfAutomate AI. 
+    const systemPrompt = `You are a helpful sales assistant for Riwa AI. 
     Use the following website content context to answer questions: ${context}.
     Keep answers short (under 50 words), professional, and encouraging.
     If the user speaks Arabic, reply in Arabic. If English, reply in English.`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3-flash-preview',
       contents: userMessage,
       config: {
         systemInstruction: systemPrompt,
