@@ -153,6 +153,17 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
         }
       ]
     },
+    reviews: {
+      sectionTitle: "Voices of Success",
+      items: [
+        {
+          name: "Canaan Poh",
+          role: "Co-Founder of Lythe",
+          image: "https://media.licdn.com/dms/image/v2/D4E03AQHvSAecDwm6PA/profile-displayphoto-crop_800_800/B4EZpYJE4eKoAI-/0/1762415369871?e=1767830400&v=beta&t=KZPehMqLNabUazrVeHcjXwboU9CApBvn3i-PmrS2zyI",
+          text: "Riwa AI Agency is building AI-driven automation tailored to our real operational needs. Their expertise with n8n and intelligent WhatsApp/Telegram bots, combined with clear communication and practical execution, makes this project highly promising as it moves toward full deployment."
+        }
+      ]
+    },
     howItWorks: {
       sectionTitle: "Deployment Roadmap",
       sectionSubtitle: "From audit to automation in 3 weeks or less.",
@@ -393,6 +404,17 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
           solution: "الحل: بحث تلقائي عن الحالة.",
           kpi: "حل تلقائي 80٪",
           kpis: ["حل تلقائي 80٪"]
+        }
+      ]
+    },
+    reviews: {
+      sectionTitle: "أصوات النجاح",
+      items: [
+        {
+          name: "كنعان بوه",
+          role: "المؤسس المشارك لشركة Lythe",
+          image: "https://media.licdn.com/dms/image/v2/D4E03AQHvSAecDwm6PA/profile-displayphoto-crop_800_800/B4EZpYJE4eKoAI-/0/1762415369871?e=1767830400&v=beta&t=KZPehMqLNabUazrVeHcjXwboU9CApBvn3i-PmrS2zyI",
+          text: "تقوم وكالة ريوا للذكاء الاصطناعي ببناء أتمتة مدفوعة بالذكاء الاصطناعي ومصممة خصيصاً لاحتياجاتنا التشغيلية الحقيقية. إن خبرتهم في n8n وبوتات واتساب وتليجرام الذكية، إلى جانب التواصل الواضح والتنفيذ العملي، تجعل هذا المشروع واعداً للغاية مع انتقاله نحو النشر الكامل."
         }
       ]
     },

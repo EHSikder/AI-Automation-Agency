@@ -8,7 +8,7 @@ import { CONTENT, STRATEGY_CALL_URL, FREE_PILOT_URL } from './constants';
 import { 
   ArrowRight, Check, Phone, MessageSquare, Workflow, Zap, Sparkles, 
   Trophy, BarChart3, Search, UserPlus, Share2, Palette, 
-  Plus, Minus 
+  Plus, Minus, Quote
 } from 'lucide-react';
 
 // --- Components ---
@@ -196,6 +196,49 @@ const IndustrySection = () => {
   );
 };
 
+const ReviewsSection = () => {
+  const { language } = useLanguage();
+  const c = CONTENT[language].reviews;
+  if (!c) return null;
+
+  return (
+    <section className="py-32 relative">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <SectionHeader title={c.sectionTitle} />
+        <div className="grid grid-cols-1 gap-12">
+          {c.items.map((review, idx) => (
+            <div key={idx} className="relative group max-w-4xl mx-auto">
+              <div className="absolute -top-10 -left-10 text-cta opacity-20 group-hover:opacity-40 transition-opacity">
+                <Quote className="w-32 h-32" />
+              </div>
+              <div className="relative z-10 p-10 md:p-16 rounded-[3rem] bg-surface/60 backdrop-blur-xl border border-border shadow-2xl flex flex-col md:flex-row items-center md:items-start gap-10">
+                <div className="flex-shrink-0">
+                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-cta/30 overflow-hidden shadow-2xl group-hover:border-cta transition-colors duration-500">
+                    <img 
+                      src={review.image} 
+                      alt={review.name} 
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" 
+                    />
+                  </div>
+                </div>
+                <div className="flex-1 text-center md:text-left rtl:md:text-right">
+                  <div className="mb-6">
+                    <h4 className="text-2xl font-bold text-white mb-1">{review.name}</h4>
+                    <p className="text-cta text-sm font-semibold tracking-wide uppercase">{review.role}</p>
+                  </div>
+                  <p className="text-xl md:text-2xl text-text-main leading-relaxed font-light italic">
+                    "{review.text}"
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const PricingSection = () => {
   const { language } = useLanguage();
   const c = CONTENT[language].pricing;
@@ -356,6 +399,7 @@ const MainContent = () => {
       <FeaturesStrip />
       <ServicesSection />
       <IndustrySection />
+      <ReviewsSection />
       <PricingSection />
       <FaqSection />
       <ContactSection />

@@ -78,6 +78,15 @@ export interface Translation {
     sectionSubtitle: string;
     items: Industry[];
   };
+  reviews?: {
+    sectionTitle: string;
+    items: {
+      name: string;
+      role: string;
+      image: string;
+      text: string;
+    }[];
+  };
   howItWorks: {
     sectionTitle: string;
     sectionSubtitle: string;

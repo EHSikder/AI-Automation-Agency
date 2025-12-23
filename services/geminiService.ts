@@ -8,7 +8,7 @@ export const supportEmailTool = {
   name: 'sendEmailToSupport',
   parameters: {
     type: Type.OBJECT,
-    description: 'Sends a message or notification to the RIWA AI support team when the AI cannot answer a question or a human is requested.',
+    description: 'Sends a message or notification to the RIWA AI support team (ekramhosain0091@gmail.com) when the AI cannot answer a question or a human is requested.',
     properties: {
       user_query: {
         type: Type.STRING,
@@ -33,26 +33,37 @@ export const generateResponse = async (userMessage: string, lang: 'en' | 'ar', h
   }
 
   try {
-    const context = lang === 'en' ? JSON.stringify(CONTENT.en) : JSON.stringify(CONTENT.ar);
+    const contextEn = JSON.stringify(CONTENT.en);
+    const contextAr = JSON.stringify(CONTENT.ar);
+    
     const systemPrompt = `You are the Official AI Brand Representative for RIWA AI.
     
-    COMPANY KNOWLEDGE:
-    - Name: ${COMPANY_INFO.name}
-    - Services: Voice Agents, WhatsApp Automation, B2B Scraping, AI Sales Closers, Social Media Management, AI Design, Full-Stack POS Integrations.
-    - Markets: UAE, KSA, Kuwait, Qatar.
-    - Contact: ${COMPANY_INFO.email}, ${COMPANY_INFO.phone}.
-    - Site Content: ${context}
+    YOUR PRIMARY ROLE:
+    Answer visitor questions accurately based ONLY on the website information provided below.
+    
+    WEBSITE KNOWLEDGE (ENGLISH):
+    ${contextEn}
 
-    OPERATIONAL RULES:
-    1. Always answer based on the provided site content.
-    2. Be professional, concise (max 60 words), and Khaleeji-market focused.
-    3. LANGUAGE: If asked in Arabic, use professional Arabic with a hint of Gulf dialect where appropriate. If English, use professional business English.
-    4. ESCALATION: If you cannot answer a question or if the user asks for things not mentioned in the services, you MUST say: "I am connecting your message with our team." AND use the 'sendEmailToSupport' tool.
-    5. NEVER make up pricing or capabilities not listed in the context.
-    6. If a human is requested, use the tool and confirm escalation.`;
+    WEBSITE KNOWLEDGE (ARABIC):
+    ${contextAr}
+
+    KEY COMPANY INFO:
+    - Name: ${COMPANY_INFO.name}
+    - Services: Voice Agents, WhatsApp Automation, Lead Scraping, AI Sales Closers, Social Media Management, AI Design Studio, POS Integrations.
+    - Official Email for Escalation: ekramhosain0091@gmail.com
+    - WhatsApp: ${COMPANY_INFO.phone}
+
+    BEHAVIORAL RULES:
+    1. GROUNDING: Strictly use the provided website content. If information is missing, do not guess.
+    2. ESCALATION: If you cannot answer a question based on the content, you MUST say exactly: "I am connecting your message with our team." AND call the 'sendEmailToSupport' tool.
+    3. LANGUAGE: Respond in the language used by the user (English or Arabic). If Arabic, use a professional tone with Gulf (Khaleeji) nuances where appropriate.
+    4. BREVITY: Keep all responses professional and under 60 words.
+    5. DIRECTNESS: If asked about booking, direct them to the "Book Strategy Call" buttons on the site.
+
+    If the user requests a human or asks a complex technical question outside these docs, invoke the escalation tool immediately.`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-2.0-flash-exp',
       contents: [...history, { role: 'user', parts: [{ text: userMessage }] }],
       config: {
         systemInstruction: systemPrompt,
@@ -60,7 +71,6 @@ export const generateResponse = async (userMessage: string, lang: 'en' | 'ar', h
       }
     });
 
-    const candidate = response.candidates?.[0];
     const functionCalls = response.functionCalls;
     const text = response.text;
 
