@@ -326,17 +326,17 @@ const ContactSection = () => {
                 <p className="text-xl text-text-muted">{c.subtitle}</p>
             </div>
 
-            <form className="max-w-xl mx-auto space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid md:grid-cols-2 gap-6">
-                <input type="text" placeholder={c.form.name} className="w-full bg-background border border-border rounded-xl px-6 py-4 text-white focus:border-cta focus:outline-none transition-colors" />
-                <input type="email" placeholder={c.form.email} className="w-full bg-background border border-border rounded-xl px-6 py-4 text-white focus:border-cta focus:outline-none transition-colors" />
-              </div>
-              <input type="tel" placeholder={c.form.phone} className="w-full bg-background border border-border rounded-xl px-6 py-4 text-white focus:border-cta focus:outline-none transition-colors" />
-              <button className="w-full bg-cta text-white font-bold text-lg py-5 rounded-xl hover:bg-cta-hover transition-all shadow-lg hover:shadow-cta/25 transform hover:-translate-y-1">
+            <div className="max-w-xl mx-auto text-center">
+              <a 
+                href={STRATEGY_CALL_URL} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block w-full bg-cta text-white font-bold text-lg py-5 rounded-xl hover:bg-cta-hover transition-all shadow-lg hover:shadow-cta/25 transform hover:-translate-y-1"
+              >
                 {c.form.submit}
-              </button>
-              <p className="text-center text-xs text-text-muted">{c.disclaimer}</p>
-            </form>
+              </a>
+              <p className="mt-6 text-xs text-text-muted">{c.disclaimer}</p>
+            </div>
         </div>
       </div>
     </section>
