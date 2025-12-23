@@ -9,7 +9,8 @@ export const COMPANY_INFO = {
   markets: "UAE, KSA, Kuwait, Qatar"
 };
 
-export const STRATEGY_CALL_URL = "https://riwa-ekram.youcanbook.me";
+export const STRATEGY_CALL_URL = "https://riwa-ekram.youcanbook.me/";
+export const FREE_PILOT_URL = "https://form.jotform.com/253563703575058";
 
 export const CONTENT: Record<'en' | 'ar', Translation> = {
   en: {
@@ -176,7 +177,6 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
             "Monthly performance summary",
             "Ongoing maintenance & standard support"
           ],
-          roi: "Est. ROI: 3x first month",
           cta: "Book Strategy Call"
         },
         {
@@ -420,7 +420,6 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
             "ملخص شهري للأداء",
             "صيانة مستمرة ودعم قياسي"
           ],
-          roi: "عائد استثمار فوري",
           cta: "حجز مكالمة استراتيجية"
         },
         {

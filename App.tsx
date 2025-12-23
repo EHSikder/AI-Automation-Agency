@@ -4,7 +4,7 @@ import { Layout } from './components/Layout';
 import { LanguageProvider, useLanguage } from './components/LanguageContext';
 import AIChatWidget from './components/AIChatWidget';
 import Background3D from './components/Background3D';
-import { CONTENT, STRATEGY_CALL_URL } from './constants';
+import { CONTENT, STRATEGY_CALL_URL, FREE_PILOT_URL } from './constants';
 import { 
   ArrowRight, Check, Phone, MessageSquare, Workflow, Zap, Sparkles, 
   Trophy, BarChart3, Search, UserPlus, Share2, Palette, 
@@ -59,7 +59,7 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
-            <a href="#contact" className="w-full sm:w-auto px-10 py-5 rounded-full bg-cta text-white font-bold tracking-wide hover:bg-cta-hover transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-cta/25">
+            <a href={FREE_PILOT_URL} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-10 py-5 rounded-full bg-cta text-white font-bold tracking-wide hover:bg-cta-hover transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-cta/25">
               {c.ctaPrimary}
               <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${isRTL ? 'rotate-180' : ''}`} />
             </a>
@@ -177,7 +177,7 @@ const IndustrySection = () => {
                </div>
                
                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-               <p className="text-sm text-text-main mb-6 leading-relaxed">{item.description}</p>
+               <p className="text-sm text-text-main mb-2 leading-relaxed">{item.description}</p>
                
                <div className="space-y-3 bg-background/60 p-4 rounded-xl border border-border/50">
                    <div className="text-xs text-red-300 font-medium opacity-90">{item.problem}</div>
@@ -232,16 +232,6 @@ const PricingSection = () => {
                   )}
                   <p className="text-sm text-text-main mt-4 leading-relaxed opacity-90">{plan.description}</p>
                 </div>
-
-                {plan.roi && (
-                    <div className="p-4 bg-background/50 rounded-xl mb-8 border border-border/50">
-                        <div className="text-xs text-text-muted uppercase mb-1">Impact</div>
-                        <div className="text-sm font-bold text-green-400 flex items-center gap-2">
-                            <BarChart3 className="w-4 h-4" />
-                            {plan.roi}
-                        </div>
-                    </div>
-                )}
 
                 <div className="flex-grow mb-10">
                   {plan.featuresTitle && (
