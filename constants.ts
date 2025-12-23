@@ -9,7 +9,7 @@ export const COMPANY_INFO = {
   markets: "UAE, KSA, Kuwait, Qatar"
 };
 
-export const STRATEGY_CALL_URL = "https://riwa-ekram.youcanbook.me/";
+export const STRATEGY_CALL_URL = "https://riwaai.youcanbook.me/";
 export const FREE_PILOT_URL = "https://form.jotform.com/253563703575058";
 
 export const CONTENT: Record<'en' | 'ar', Translation> = {
@@ -19,7 +19,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       { id: 'industries', label: 'Industries', href: '#industries' },
       { id: 'pricing', label: 'Engagement', href: '#pricing' },
       { id: 'faq', label: 'FAQ', href: '#faq' },
-      { id: 'contact', label: 'Book Demo', href: '#contact' },
+      { id: 'contact', label: 'Book Demo', href: STRATEGY_CALL_URL },
     ],
     hero: {
       badge: "7-DAY FREE PILOT • LIMITED AVAILABILITY",
@@ -273,7 +273,7 @@ export const CONTENT: Record<'en' | 'ar', Translation> = {
       { id: 'industries', label: 'القطاعات', href: '#industries' },
       { id: 'pricing', label: 'الخطط', href: '#pricing' },
       { id: 'faq', label: 'الأسئلة الشائعة', href: '#faq' },
-      { id: 'contact', label: 'حجز ديمو', href: '#contact' },
+      { id: 'contact', label: 'حجز ديمو', href: STRATEGY_CALL_URL },
     ],
     hero: {
       badge: "تجربة مجانية لمدة 7 أيام • أماكن محدودة",
